@@ -1,6 +1,4 @@
-# Front-End Project
-
-- Hunter & Ethan
+# Front-End Project (Hunter & Ethan)
 
 - [Front End Guide](https://dc-web2.onrender.com/p2/GroupProjects/frontEnd.html#1)
 - [Local Storage](https://dc-web2.onrender.com/p2/Javascript/LocalStorage.html#1)
