@@ -21,11 +21,17 @@
     display: flex;
     justify-content: space-between;
 }
-.coinName{
-    /* position: relative;
-    right: 100px; */
-}
+
 .dataValue{
     padding-top: 5px;
     padding-bottom: 5px;
+}
+.coinNames{
+    /* position: relative;
+    left: 15px; */
+}
+.prices{
+    display: flex;
+    flex-direction: column;
+    /* align-items: flex-end; */
 }
