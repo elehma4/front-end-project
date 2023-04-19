@@ -9,7 +9,7 @@
     top: 100px;
     background-color: #FEFEE2;
     height: 400px;
-    width: 444px;
+    width: 450px;
     border-radius: 3%;
     flex-direction: column;
     align-items: center;
@@ -134,4 +134,26 @@
     padding: 15px 150px;
     font-size: x-large;
     border-radius: 15px;
+}
+
+@media only screen and (max-width: 473px){
+
+    .assetAmt{
+        width: 222px;
+    }
+    .assetAmt2{
+        width: 222px;
+    }
+}
+@media only screen and (max-width: 400px){
+
+    .assetAmt{
+        width: 177px;
+    }
+    .assetAmt2{
+        width: 177px;
+    }
+    .swapBtn {
+        padding: 15px 133px;
+    }
 }
