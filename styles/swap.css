@@ -1,0 +1,17 @@
+.center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.mainSwap{
+    display: flex;
+    position: relative;
+    top: 100px;
+    background-color: #FEFEE2;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    width: 444px;
+    border-radius: 3%;
+    flex-direction: column;
+}
