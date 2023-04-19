@@ -1,0 +1,56 @@
+/* green #7FC37E
+/* light #FEFEE2
+/* dark #333333 */
+
+.bg-green{
+    background-color: #7FC37E;
+}
+.bg-cream{
+    background-color: #FEFEE2;
+}
+.bg-brown{
+    background-color: #333333;
+}
+.whole-page{
+    height: 100vh;
+    width: 100vw;
+}
+.left-nav{
+    display: flex; 
+}
+.navbar-nav{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.btn{
+    background-color: white;
+    border: none;
+    color: #333333;
+    outline: none;
+}
+.btn:hover{
+    background-color: #7FC37E;
+}
+.btn:active{
+    background-color: #7FC37E;
+}
+.btn:focus{
+    background-color: #7FC37E;
+}
+
+.nav-logo{
+    height: 100px;
+}
+.dropdown-item:hover{
+    background-color: #7FC37E;
+    color: white;
+}
+.dropdown-menu{
+    background-color: #7FC37E;
+    color: white;
+}
+.content{
+    position: relative;
+    top: 126px;
+}
