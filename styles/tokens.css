@@ -1,0 +1,31 @@
+.content{
+    display: flex;
+    flex-direction: column;
+    border: solid black 2px;
+    border-radius: 25px;
+    margin-top: 20px;
+}
+.topRow{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: solid black 2px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+.gridContent{
+    padding-left: 30px;
+    padding-right: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+.coinName{
+    /* position: relative;
+    right: 100px; */
+}
+.dataValue{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
