@@ -5,9 +5,9 @@
 let numbers = document.querySelector(".numbers");
 let coinNames = document.querySelector(".coinNames");
 let prices = document.querySelector(".prices");
-let marketCap = document.querySelector(".marketCap");
-let volumes = document.querySelector(".volume");
-let changes = document.querySelector(".change");
+let marketCap = document.querySelector(".marketCaps");
+let volumes = document.querySelector(".volumes");
+let changes = document.querySelector(".changes");
 
 //functions
 
