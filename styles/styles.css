@@ -50,3 +50,7 @@
     background-color: #7FC37E;
     color: white;
 }
+.content{
+    position: relative;
+    top: 126px;
+}
