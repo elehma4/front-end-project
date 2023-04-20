@@ -38,14 +38,14 @@ const coins = {
     }
   };
 
-let url = `https://api.coingecko.com/api/v3/simple/price?ids=${coins.bitcoin.name}&vs_currencies=usd&precision=full`
 
-fetch(url)
-.then(results=>results.json())
-.then(price => {
-    // console.log(price);
-    console.log(price.bitcoin.usd); //price of coin vs usd
-})
+
+// fetch(url)
+// .then(results=>results.json())
+// .then(price => {
+//     // console.log(price);
+//     console.log(price.bitcoin.usd); //price of coin vs usd
+// })
 
 // Asset Button Modal Pop-up
 let assetButton = document.querySelector('.assetButton')
@@ -115,6 +115,7 @@ window.addEventListener("click", (e)=>{
         return;
     }
     assetModal.style.display = 'none';
+    // console.log(assetButton.textContent);
 });
 
 
@@ -123,9 +124,9 @@ let assetButton2 = document.querySelector('.assetButton2')
 
 // modal elements:
 let assetModal2 = document.createElement('div');
-assetModal2.classList.add('assetModal')
+assetModal2.classList.add('assetModal2')
 let assetModalContent2 = document.createElement('div');
-assetModalContent2.classList.add('assetModalContent')
+assetModalContent2.classList.add('assetModalContent2')
 // let selectToken = document.createElement('div')
 // selectToken.classList.add('selectToken')
 // selectToken.innerHTML = "Select a token<br><hr>"
@@ -186,9 +187,65 @@ window.addEventListener("click", (e)=>{
         return;
     }
     assetModal2.style.display = 'none';
+    // console.log(assetButton2.textContent);
 });
 
 // console.log(assetModal);
-// Price of asset selected in asset button
-let inputPrice = document.querySelector('#inputPrice')
 
+// Price of asset selected in asset button
+
+function inputPriceFunction(){
+    for (const [key, value] of Object.entries(coins)){
+        if(assetButton.textContent == value.ticker){
+            coinForConversion = value.name
+            // console.log(value.name); //gets name of current asset in button for api
+            // console.log(typeof(value.name));
+            let url = `https://api.coingecko.com/api/v3/simple/price?ids=${coinForConversion}&vs_currencies=usd&precision=full`
+            
+            fetch(url)
+            .then(results=>results.json())
+            .then(price =>{
+                let assetAmt = document.querySelector('.assetAmt').value
+                let inputPrice = document.querySelector('#inputPrice')
+                console.log(price);
+                const usdValue = price[coinForConversion].usd;
+                console.log(usdValue);
+
+                inputPrice.innerHTML = `$${(Number(assetAmt) * usdValue).toFixed(2)}`;
+
+                console.log(inputPrice.innerHTML);
+
+
+            })
+
+        }
+        
+    }
+}
+function inputPriceFunction2(){
+    for (const [key, value] of Object.entries(coins)){
+        if(assetButton2.textContent == value.ticker){
+            coinForConversion = value.name
+            // console.log(value.name); //gets name of current asset in button for api
+            // console.log(typeof(value.name));
+            let url = `https://api.coingecko.com/api/v3/simple/price?ids=${coinForConversion}&vs_currencies=usd&precision=full`
+            
+            fetch(url)
+            .then(results=>results.json())
+            .then(price =>{
+                let assetAmt2 = document.querySelector('.assetAmt2').value
+                let inputPrice2 = document.querySelector('#inputPrice2')
+                console.log(price);
+                const usdValue = price[coinForConversion].usd;
+                console.log(usdValue);
+
+                inputPrice2.innerHTML = `$${(Number(assetAmt2) * usdValue).toFixed(2)}`;
+
+                console.log(inputPrice2.innerHTML);
+
+                
+            })
+
+        }
+    }
+}

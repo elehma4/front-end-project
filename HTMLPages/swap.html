@@ -68,7 +68,7 @@
 
                 <div class="swap2 bg-opac">
                   <div class="sellAsset">
-                    <input class="assetAmt" placeholder="0" type="text" inputmode="decimal"></input>
+                    <input class="assetAmt" placeholder="0" type="text" inputmode="decimal" onkeyup="inputPriceFunction()"></input>
                     <button class="assetButton"><img id="thumbImg1" src="https://assets.coingecko.com/coins/images/6319/thumb/USD_Coin_icon.png">USDC</button>
                   </div>
                   <div class="priceAsset">
@@ -79,7 +79,7 @@
 
                 <div class="swap3">
                   <div class="bg-opac buy-asset">
-                    <input class="assetAmt2" placeholder="0" type="text" inputmode="decimal"></input>
+                    <input class="assetAmt2" placeholder="0" type="text" inputmode="decimal" onkeyup="inputPriceFunction2()"></input>
                     <button class="assetButton2"><img src="https://assets.coingecko.com/coins/images/279/thumb/ethereum.png">ETH</button>
                     <div class="priceAsset2">
                       <div id="inputPrice2">$0.00</div>
@@ -87,7 +87,7 @@
                     </div>
                   </div>
                   <div class="bg-opac trade-comparison">
-                    <div id="comparePrice">1 ETH = 1,977 USDC ($1,977.5 USDC)</div>
+                    <div id="comparePrice"></div>
                     <div class="d-flex gas"><img src="/images/gas-icon.svg" alt=""></div>
                   </div>
                   <div class="d-flex align-items-center justify-content-center">
