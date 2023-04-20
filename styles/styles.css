@@ -54,4 +54,48 @@
     position: relative;
     top: 126px;
 }
-
+.rightSideNav{
+    display: flex;
+}
+.connectBtn{
+    margin-left: 10px;
+    border-radius: 25px;
+    background-color: white;
+}
+.connectBtn:hover{
+    background-color: #7FC37E;
+    color: white;
+}
+.connectPopUp{
+    position: relative;
+    z-index: 10;
+    background-color: white;
+    color: black;
+    border: solid black 2px;
+    left: 70%;
+    height: calc(100% - 126px);
+    bottom: 148px;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: center;
+}
+.loginPopUp{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.loginBox{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 50%;
+    margin: 0px;
+    padding-top: 30px;
+}
+.submit{
+    width: 70%;
+    align-self: center;
+}

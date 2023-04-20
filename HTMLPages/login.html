@@ -8,8 +8,8 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
   <link rel="icon" href="/images/wing-black.png">
+  <link rel="stylesheet" href="../styles/createUser.css">
   <link rel="stylesheet" href="../styles/styles.css">
-  <link rel="stylesheet" href="../styles/tokens.css">
 </head>
 <body>
 
@@ -42,7 +42,7 @@
                   <li class="nav-item dropdown">
                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example</button>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                      <li><a class="dropdown-item" href="#">Create User</a></li>
+                      <li><a class="dropdown-item" href="">Create User</a></li>
                       <li><a class="dropdown-item" href="#">Another action</a></li>
                       <li><a class="dropdown-item" href="#">Something else here</a></li>
                     </ul>
@@ -54,35 +54,20 @@
             </div>
           </nav>
         <div class="contentContainer">
-          <div class="content">
-
-            <div class="topRow">
-                <div>#</div>
-                <div>Token Name</div>
-                <div>Price</div>
-                <div>Change</div>
-                <div>Market Cap</div>
-                <div id="volumeTitle">Volume</div>
+         
+            <div class="createUserbox">
+                <form class="createUserForm" action="javascript:createUser();">
+                    <label for="userName">Username:</label>
+                    <input type="text" id="userName" name="userName" required autocomplete><br><br>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required autocomplete><br><br>
+                    <div class="submitCon">
+                        <input type="submit" value="Submit">
+                    </div>
+                  </form>
             </div>
-            <div class="gridContent">
-                <div class="numbers gridValue">
-                </div>
-                <div class="coinNames gridValue">  
-                </div>
-                <div class="prices gridValue">                    
-                </div>
-                <div class="changes gridValue"></div>
-                <div class="marketCaps gridValue"></div>
-                <div class="volumes gridValue"></div>
-                
-
-            </div>
-
-            
-          </div>
         </div>
-          <script src="../scripts/tokens.js"></script>
-          <script src="../scripts/connect.js"></script>
+          <script src="../scripts/user.js"></script>
     </div>
 </body>
 </html>

@@ -1,0 +1,17 @@
+.contentContainer{
+    position: relative;
+    top: 126px;
+    height: calc(100% - 126px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.submitCon{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+.createUserForm{
+    padding: 10px;
+    border: solid black 1px;
+}
