@@ -260,7 +260,7 @@ function inputPriceFunction2(){
         }
 
         async function compareAssets(){
-            await wait(333)
+            await wait(777)
             await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${asset1}&vs_currencies=usd&precision=full`)
                 .then(results=>results.json())
                 .then(price =>{
