@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bootstrap Site</title>
+  <title>Hermes App</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
@@ -11,12 +11,7 @@
   <link rel="stylesheet" href="/styles/swap.css">
   <link rel="icon" href="/images/wing-black.png">
 
-  <style>
-    .model{
-     justify-self: space-between;
-    }
-  
-  </style>
+
 </head>
 <body>
 
@@ -67,32 +62,32 @@
                       <b>Swap</b>
                     </div>
                     <div class="swap1settings">
-                      <img src="/images/settings-icon.svg" alt="">
+                      <img id="settings" src="/images/settings-icon.svg" alt="">
                     </div>
                 </div>
 
                 <div class="swap2 bg-opac">
                   <div class="sellAsset">
-                    <input class="assetAmt" type="text" inputmode="decimal"></input>
-                    <button class="assetButton"><img src="https://assets.coingecko.com/coins/images/6319/thumb/USD_Coin_icon.png">USDC</button>
+                    <input class="assetAmt" placeholder="0" type="text" inputmode="decimal" onkeyup="inputPriceFunction()"></input>
+                    <button class="assetButton"><img id="thumbImg1" src="https://assets.coingecko.com/coins/images/6319/thumb/USD_Coin_icon.png">USDC</button>
                   </div>
                   <div class="priceAsset">
-                    <div id="inputPrice">$1983.99</div>
-                    <div class="d-flex">Balance: 5,166 <div><button class="maxBtn">MAX</button></div></div>
+                    <div id="inputPrice">$0.00</div>
+                    <div class="d-flex">Balance: 0 <div><button class="maxBtn">MAX</button></div></div>
                   </div>
                 </div>
 
                 <div class="swap3">
                   <div class="bg-opac buy-asset">
-                    <input class="assetAmt2" type="text" inputmode="decimal"></input>
+                    <input class="assetAmt2" placeholder="0" type="text" inputmode="decimal" onkeyup="inputPriceFunction2()"></input>
                     <button class="assetButton2"><img src="https://assets.coingecko.com/coins/images/279/thumb/ethereum.png">ETH</button>
                     <div class="priceAsset2">
-                      <div id="inputPrice2">$1983.99</div>
-                      <div class="d-flex">Balance: 0.15<div></div></div>
+                      <div id="inputPrice2">$0.00</div>
+                      <div class="d-flex">Balance: 0<div></div></div>
                     </div>
                   </div>
                   <div class="bg-opac trade-comparison">
-                    <div id="comparePrice">1 ETH = 1,977 USDC ($1,977.5 USDC)</div>
+                    <div id="comparePrice"></div>
                     <div class="d-flex gas"><img src="/images/gas-icon.svg" alt=""></div>
                   </div>
                   <div class="d-flex align-items-center justify-content-center">
