@@ -1,3 +1,35 @@
+let connectBtn = document.querySelector('.connectBtn');
+
+// function to check is a user is logged in
+// makes name appear in text of connectBtn if they are logged in
+
+let checkForLoggedIn = () => {
+    let storage = window.localStorage;
+
+    let i = 0
+    for(let key in storage){
+
+        console.log(key);
+        console.log();
+        let parsed = JSON.parse(window.localStorage[key]);
+        console.log(parsed);
+        console.log(parsed.loggedIn);
+
+        if(parsed.loggedIn === true){
+            connectBtn.innerText = parsed.name;
+            break;
+        }
+
+        if(i === storage.length){
+            break;
+        }
+
+        i++;
+        
+    }
+}
+
+checkForLoggedIn();
 //creating User class to store default values in local storage
 
 class User {
@@ -77,31 +109,12 @@ let logoutUser = (name) => {
 // global variables
 
 let wholePage = document.querySelector('.whole-page');
-let connectBtn = document.querySelector('.connectBtn');
 let connectPopUp = document.createElement('div');
 connectPopUp.setAttribute('class','connectPopUp');
 let createAccountButton = document.createElement('button');
 let submit = document.createElement('button');
 let userName = document.createElement('input');
 let logOutButton = document.createElement('button');
-
-// function to check is a user is logged in
-// makes name appear in text of connectBtn if they are logged in
-
-let checkForLoggedIn = () => {
-
-    let storage = window.localStorage;
-
-    for(let key in storage){
-        let parsed = JSON.parse(window.localStorage[key]);
-
-        if(parsed.loggedIn === true){
-            connectBtn.innerText = parsed.name;
-        }
-        break;
-    }
-}
-checkForLoggedIn();
 
 // function to add popUp containing login buttons
 let addButtons = () => {
@@ -147,8 +160,8 @@ let addButtons = () => {
 
 // EL for connectBtn that calls addButtons function and creates createAccount DOM elements
 // 
-connectBtn.addEventListener('click', (e) => {
 
+connectBtn.addEventListener('click', (e) => {
     connectPopUp.removeAttribute('display');
 
     if(connectBtn.innerText === "Connect"){
@@ -186,6 +199,8 @@ createAccountButton.addEventListener('click', (e) => {
 
 submit.addEventListener('click', (e) => {
 
+    connectPopUp.removeAttribute('display');
+
     let name = userName.value;
 
     loginUser(name);
@@ -201,3 +216,4 @@ logOutButton.addEventListener('click', (e) => {
     connectPopUp.style.display = "none";
 })
 console.log(window.localStorage.Ethan);
+console.log(window.localStorage);

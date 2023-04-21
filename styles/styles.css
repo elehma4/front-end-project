@@ -61,6 +61,7 @@
     margin-left: 10px;
     border-radius: 25px;
     background-color: white;
+    width: 77px;
 }
 .connectBtn:hover{
     background-color: #7FC37E;
