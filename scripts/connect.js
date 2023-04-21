@@ -1,14 +1,17 @@
 let connectBtn = document.querySelector('.connectBtn');
+console.log('hello');
 
 // function to check is a user is logged in
 // makes name appear in text of connectBtn if they are logged in
 
 let checkForLoggedIn = () => {
     let storage = window.localStorage;
-
     let i = 0
     for(let key in storage){
-
+        if(i === storage.length){
+            break;
+        }
+        console.log('hello');
         console.log(key);
         console.log();
         let parsed = JSON.parse(window.localStorage[key]);
@@ -20,15 +23,12 @@ let checkForLoggedIn = () => {
             break;
         }
 
-        if(i === storage.length){
-            break;
-        }
+        
 
         i++;
         
     }
 }
-
 checkForLoggedIn();
 //creating User class to store default values in local storage
 
@@ -160,7 +160,6 @@ let addButtons = () => {
 
 // EL for connectBtn that calls addButtons function and creates createAccount DOM elements
 // 
-
 connectBtn.addEventListener('click', (e) => {
     connectPopUp.removeAttribute('display');
 
