@@ -141,7 +141,7 @@ let addButtons = () => {
     passwordText.innerText = "Password:"
     
     submit.setAttribute('class', 'submit');
-    submit.innerText = "Sumbit";
+    submit.innerText = "Submit";
     let userNameRow = document.createElement('div');
     userNameRow.setAttribute('class', 'userNameRow')
     let passwordRow = document.createElement('div');
@@ -214,5 +214,6 @@ logOutButton.addEventListener('click', (e) => {
     logoutUser(name);
     connectPopUp.style.display = "none";
 })
+checkForLoggedIn();
 console.log(window.localStorage.Ethan);
 console.log(window.localStorage);

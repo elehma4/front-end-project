@@ -87,6 +87,7 @@
     flex-direction: column;
     border-radius: 25px;
     background-color: #FEFEE2;
+    color: #333333;
 }
 .loginBox{
     display: flex;
@@ -122,10 +123,16 @@
 .userName{
     text-align: center;
     height: 30px;
+    background-color: rgb(51, 51, 51, 0.9);
+    color: #FEFEE2;
+    border-radius: 5px;
 }
 .password{
     text-align: center;
     height: 30px;
+    background-color: rgb(51, 51, 51, 0.9);
+    color: #FEFEE2;
+    border-radius: 5px;
 }
 .createAccountText{
     padding-bottom: 10px;
