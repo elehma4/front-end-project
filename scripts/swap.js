@@ -235,17 +235,101 @@ function inputPriceFunction2(){
             .then(price =>{
                 let assetAmt2 = document.querySelector('.assetAmt2').value
                 let inputPrice2 = document.querySelector('#inputPrice2')
-                console.log(price);
+                // console.log(price);
                 const usdValue = price[coinForConversion].usd;
-                console.log(usdValue);
+                // console.log(usdValue);
 
                 inputPrice2.innerHTML = `$${(Number(assetAmt2) * usdValue).toFixed(2)}`;
 
-                console.log(inputPrice2.innerHTML);
-
-                
+                // console.log(inputPrice2.innerHTML);
             })
-
         }
+        
+        // COMPARE PRICE
+        let comparePrice = document.querySelector('#comparePrice') 
+        
+        let asset1 = assetButton.textContent
+        if(value.ticker == asset1){
+            asset1 = value.name
+            console.log(asset1);
+        }
+        let asset2 = assetButton2.textContent
+        if(asset2 == value.ticker){
+            asset2 = value.name
+            console.log(asset2);
+        }
+
+        async function compareAssets(){
+            await wait(333)
+            await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${asset1}&vs_currencies=usd&precision=full`)
+                .then(results=>results.json())
+                .then(price =>{
+                    // console.log(typeof(price));
+                    try{
+                    console.log(price[asset1].usd);
+                    }
+                    catch(err){
+                        console.log('price data');
+                    }
+                    // let inputPrice2 = document.querySelector('#inputPrice2')
+                    // console.log(Number(inputPrice2.innerHTML.slice(1)));
+                    try{
+                    solve = Number(inputPrice2.innerHTML.slice(1)) / price[asset1].usd
+                    rate = solve.toFixed(2)
+                    comparePrice.innerHTML = `1 ${assetButton2.textContent} = ${rate} ${assetButton.textContent}`
+                    } catch(err){
+                        console.log('solving...');
+                    }
+                })
+            // console.log(asset1price);
+            // rate = Number(priceinput2.innerHTML) / asset1price
+        }
+        async function callCompareAssets(){
+            await wait(333)
+            compareAssets()
+        }
+        callCompareAssets()
     }
 }
+
+function wait(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+
+// INPUT FIELD COMPARISON
+
+// event listeners to update inputs
+// assetAmt.addEventListener('input', ()=>{
+//     // get current input value 
+//     let value = Number(assetAmt.value);
+//     // get conversion rate
+//     let rate = getPriceConversionRate();
+//     // calculate converted value and update input
+//     assetAmt2.value = (value * rate).toFixed(8);
+// });
+
+// assetAmt2.addEventListener('input', ()=>{
+//     // get current input value 
+//     let value = Number(assetAmt2.value);
+//     // get conversion rate
+//     let rate = getPriceConversionRate();
+//     // calculate converted value and update input
+//     assetAmt.value = (value * rate).toFixed(8);
+// });
+
+// // gets conversion rate between two assets
+// async function getPriceConversionRate(){
+//     // get assets
+//     let asset1 = coins[assetButton.dataset.coinName]
+//     let asset2 = coins[assetButton2.dataset.coinName]
+//     // conversion rate from API
+//     let conversionURL = `https://api.coingecko.com/api/v3/simple/price?ids=${asset1.name}&vs_currencies=${asset2.ticker}&precision=full`;
+//     return fetch(conversionURL)
+//         .then(results => results.json())
+//         .then(price=>{
+//             return price[asset1.name][asset2.ticker];
+//         })
+// }
+
+
