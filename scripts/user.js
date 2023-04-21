@@ -1,4 +1,4 @@
-let url = `https://api.coingecko.com/api/v3/simple/price?ids=${coinForConversion}&vs_currencies=usd&precision=full`
+// let url = `https://api.coingecko.com/api/v3/simple/price?ids=${coinForConversion}&vs_currencies=usd&precision=full`
 // user class declaration
 
 class User {
@@ -44,19 +44,8 @@ let createUser = ()=>{
     console.log(results);
 }
 
-let loginUser = (name) =>{
-    if(window.localStorage[name]){
-        let parsed = JSON.parse(window.localStorage[name]);
-        parsed.loggedIn = true;
-        // alert(`${name} has logged in successfully.`)
-        window.localStorage[name] = JSON.stringify(parsed);
-        // JSON.stringify(window.localStorage);
-    }
-    else{
-        // alert("There is not an account associated with the given username.")
-    }
+
    
-}
 let logoutUser = (name) => {
     // alert(`${userName} has logged out.`)
     
@@ -64,6 +53,7 @@ let logoutUser = (name) => {
         if(parsed.loggedIn === true){
             parsed.loggedIn = false;
             window.localStorage[name] = JSON.stringify(parsed);
+            connectBtn.innerText = "Connect"
         }
     
 }

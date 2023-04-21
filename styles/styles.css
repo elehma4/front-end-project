@@ -77,25 +77,49 @@
     bottom: 148px;
     width: 30%;
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    text-align: center;
-}
-.loginPopUp{
-    display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    width: 100%;
+    flex-direction: column;
 }
 .loginBox{
     display: flex;
     justify-content: center;
     flex-direction: column;
-    width: 50%;
+    width: 100%;
     margin: 0px;
     padding-top: 30px;
+    padding-bottom: 50px;
 }
 .submit{
-    width: 70%;
+    width: 50%;
     align-self: center;
+    margin-top: 10px;
+}
+.userNameRow{
+    display: flex;
+    align-items: center;
+}
+.passwordRow{
+    display: flex;
+    align-items: center;
+}
+.userNameText{
+    margin: 10px;
+}
+.passwordText{
+    margin: 10px;
+}
+.userName{
+    text-align: center;
+    height: 30px;
+}
+.password{
+    text-align: center;
+    height: 30px;
+}
+.createAccountText{
+    padding-bottom: 10px;
+}
+.logOutButton{
+    margin-top: 30px;
 }
