@@ -214,14 +214,11 @@ function inputPriceFunction(){
                 inputPrice.innerHTML = `$${(Number(assetAmt) * usdValue).toFixed(2)}`;
 
                 console.log(inputPrice.innerHTML);
-
-
             })
-
         }
-        
     }
 }
+
 function inputPriceFunction2(){
     for (const [key, value] of Object.entries(coins)){
         if(assetButton2.textContent == value.ticker){
@@ -260,7 +257,7 @@ function inputPriceFunction2(){
         }
 
         async function compareAssets(){
-            await wait(777)
+            await wait(555)
             await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${asset1}&vs_currencies=usd&precision=full`)
                 .then(results=>results.json())
                 .then(price =>{
@@ -274,10 +271,27 @@ function inputPriceFunction2(){
                     // let inputPrice2 = document.querySelector('#inputPrice2')
                     // console.log(Number(inputPrice2.innerHTML.slice(1)));
                     try{
-                    solve = Number(inputPrice2.innerHTML.slice(1)) / price[asset1].usd
-                    rate = solve.toFixed(2)
-                    comparePrice.innerHTML = `1 ${assetButton2.textContent} = ${rate} ${assetButton.textContent}`
-                    } catch(err){
+                        let assetAmt2 = document.querySelector('.assetAmt2').value
+                        if(assetAmt2 > 1){
+                            const settle = Number(inputPrice2.innerHTML.slice(1)) / assetAmt2
+                            const solveOver1 = settle / price[asset1].usd
+                            const over1Rate = solveOver1.toFixed(4)
+                            comparePrice.innerHTML = `1 ${assetButton2.textContent} = ${over1Rate} ${assetButton.textContent}`
+                        } else if (assetAmt2 == 1){
+                            const solve = Number(inputPrice2.innerHTML.slice(1)) / price[asset1].usd
+                            const rate = solve.toFixed(4)
+                            comparePrice.innerHTML = `1 ${assetButton2.textContent} = ${rate} ${assetButton.textContent}`
+                        } else if (assetAmt2 > 0){
+                            const temp = Number(inputPrice2.innerHTML.slice(1)) / assetAmt2
+                            const settleUnder1 = temp / price[asset1].usd
+                            const under1Rate = settleUnder1.toFixed(4)
+                            comparePrice.innerHTML = `1 ${assetButton2.textContent} = ${under1Rate} ${assetButton.textContent}`
+                        } else if (assetAmt2 < 0) {
+                            comparePrice.innerHTML = 'invalid input'
+                            return
+                        }
+                    } 
+                    catch(err){
                         console.log('solving...');
                     }
                 })
@@ -285,8 +299,7 @@ function inputPriceFunction2(){
             // rate = Number(priceinput2.innerHTML) / asset1price
         }
         async function callCompareAssets(){
-            await wait(333)
-            compareAssets()
+            await compareAssets()
         }
         callCompareAssets()
     }
