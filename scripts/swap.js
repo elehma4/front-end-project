@@ -201,8 +201,8 @@ async function inputPriceFunction(){
             // console.log(value.name); //gets name of current asset in button for api
             // console.log(typeof(value.name));
             let url = `https://api.coingecko.com/api/v3/simple/price?ids=${coinForConversion}&vs_currencies=usd&precision=full`
-            
-            fetch(url)
+            await wait(555)
+            await fetch(url)
             .then(results=>results.json())
             .then(price =>{
                 let assetAmt = document.querySelector('.assetAmt').value
@@ -212,16 +212,49 @@ async function inputPriceFunction(){
                 console.log(usdValue);
 
                 inputPrice.innerHTML = `$${(Number(assetAmt) * usdValue).toFixed(2)}`;
-                // console.log(inputPrice.innerHTML);      
+                // console.log(inputPrice.innerHTML);                      
             })
             
         }
+        async function priceComparison(){
+            try{
+                let inputPrice2 = document.querySelector('#inputPrice2')
+                let assetAmt2 = document.querySelector('.assetAmt2').value
+                let comparePrice = document.querySelector('#comparePrice') 
+                if(assetAmt2 > 1){
+                    const settle = Number(inputPrice2.innerHTML.slice(1)) / assetAmt2
+                    const solveOver1 = settle / usdValue
+                    const over1Rate = solveOver1.toFixed(4)
+                    comparePrice.innerHTML = `1 ${assetButton2.textContent} = ${over1Rate} ${assetButton.textContent}`
+                } else if (assetAmt2 == 1){
+                    const solve = Number(inputPrice2.innerHTML.slice(1)) / usdValue
+                    const rate = solve.toFixed(4)
+                    comparePrice.innerHTML = `1 ${assetButton2.textContent} = ${rate} ${assetButton.textContent}`
+                } else if (assetAmt2 > 0){
+                    const temp = Number(inputPrice2.innerHTML.slice(1)) / assetAmt2
+                    const settleUnder1 = temp / usdValue
+                    const under1Rate = settleUnder1.toFixed(4)
+                    comparePrice.innerHTML = `1 ${assetButton2.textContent} = ${under1Rate} ${assetButton.textContent}`
+                } else if (assetAmt2 < 0) {
+                    comparePrice.innerHTML = 'invalid input'
+                    return
+                }
+            }
+            catch(err){
+                console.log('solving...');
+            }
+        }
+        async function callpriceComparison(){
+            await priceComparison()
+        }
+        callpriceComparison()
 
             let asset2 = assetButton2.textContent
             if(asset2 == value.ticker){
                 asset2 = value.name
                 console.log(asset2);
             }
+            wait(555)
             await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${asset2}&vs_currencies=usd&precision=full`)
                 .then(results=>results.json())
                 .then(price =>{
