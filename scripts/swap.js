@@ -194,7 +194,7 @@ window.addEventListener("click", (e)=>{
 
 // Price of asset selected in asset button
 
-function inputPriceFunction(){
+async function inputPriceFunction(){
     for (const [key, value] of Object.entries(coins)){
         if(assetButton.textContent == value.ticker){
             coinForConversion = value.name
@@ -207,19 +207,25 @@ function inputPriceFunction(){
             .then(price =>{
                 let assetAmt = document.querySelector('.assetAmt').value
                 let inputPrice = document.querySelector('#inputPrice')
-                console.log(price);
+                // console.log(price);
                 const usdValue = price[coinForConversion].usd;
                 console.log(usdValue);
 
                 inputPrice.innerHTML = `$${(Number(assetAmt) * usdValue).toFixed(2)}`;
-
-                console.log(inputPrice.innerHTML);
+                // console.log(inputPrice.innerHTML);      
+                
+                // Update other assetAmt field to be 1:1 worth the value in USD
+                let otherAssetAmt = document.querySelector('.assetAmt2');
+                let otherInputPrice = document.querySelector('#inputPrice2');
+                const otherUsdValue = 
+                console.log(otherUsdValue);
+                otherAssetAmt.value = (Number(inputPrice.innerHTML.slice(1)) / otherUsdValue).toFixed(6);
+                otherInputPrice.innerHTML = `$${Number(otherAssetAmt.value).toFixed(2)}`;
             })
         }
     }
 }
-
-function inputPriceFunction2(){
+async function inputPriceFunction2(){
     for (const [key, value] of Object.entries(coins)){
         if(assetButton2.textContent == value.ticker){
             coinForConversion = value.name
@@ -234,17 +240,15 @@ function inputPriceFunction2(){
                 let inputPrice2 = document.querySelector('#inputPrice2')
                 // console.log(price);
                 const usdValue = price[coinForConversion].usd;
-                // console.log(usdValue);
+                console.log(usdValue);
 
                 inputPrice2.innerHTML = `$${(Number(assetAmt2) * usdValue).toFixed(2)}`;
-
                 // console.log(inputPrice2.innerHTML);
             })
         }
         
         // COMPARE PRICE
         let comparePrice = document.querySelector('#comparePrice') 
-        
         let asset1 = assetButton.textContent
         if(value.ticker == asset1){
             asset1 = value.name
@@ -263,7 +267,7 @@ function inputPriceFunction2(){
                 .then(price =>{
                     // console.log(typeof(price));
                     try{
-                    console.log(price[asset1].usd);
+                        console.log(price[asset1].usd);
                     }
                     catch(err){
                         console.log('price data');
@@ -290,6 +294,13 @@ function inputPriceFunction2(){
                             comparePrice.innerHTML = 'invalid input'
                             return
                         }
+                        // Update other assetAmt field to be 1:1 worth the value in USD
+                            let otherAssetAmt = document.querySelector('.assetAmt');
+                            let otherInputPrice = document.querySelector('#inputPrice');
+                            const otherUsdValue = price[asset1].usd
+                            console.log(otherUsdValue);
+                            otherAssetAmt.value = (Number(inputPrice2.innerHTML.slice(1)) / otherUsdValue).toFixed(6);
+                            otherInputPrice.innerHTML = `$${Number(otherAssetAmt.value).toFixed(2)}`;
                     } 
                     catch(err){
                         console.log('solving...');
@@ -308,41 +319,3 @@ function inputPriceFunction2(){
 function wait(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
-
-
-// INPUT FIELD COMPARISON
-
-// event listeners to update inputs
-// assetAmt.addEventListener('input', ()=>{
-//     // get current input value 
-//     let value = Number(assetAmt.value);
-//     // get conversion rate
-//     let rate = getPriceConversionRate();
-//     // calculate converted value and update input
-//     assetAmt2.value = (value * rate).toFixed(8);
-// });
-
-// assetAmt2.addEventListener('input', ()=>{
-//     // get current input value 
-//     let value = Number(assetAmt2.value);
-//     // get conversion rate
-//     let rate = getPriceConversionRate();
-//     // calculate converted value and update input
-//     assetAmt.value = (value * rate).toFixed(8);
-// });
-
-// // gets conversion rate between two assets
-// async function getPriceConversionRate(){
-//     // get assets
-//     let asset1 = coins[assetButton.dataset.coinName]
-//     let asset2 = coins[assetButton2.dataset.coinName]
-//     // conversion rate from API
-//     let conversionURL = `https://api.coingecko.com/api/v3/simple/price?ids=${asset1.name}&vs_currencies=${asset2.ticker}&precision=full`;
-//     return fetch(conversionURL)
-//         .then(results => results.json())
-//         .then(price=>{
-//             return price[asset1.name][asset2.ticker];
-//         })
-// }
-
-
