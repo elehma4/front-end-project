@@ -225,3 +225,44 @@ const inputPriceFunction = () => {
         }            
     }
 }
+
+let swapButton = document.querySelector('.swapBtn')
+
+// swap modal elements:
+let swapModal = document.createElement('div');
+swapModal.classList.add('swapModal')
+let swapModalContent = document.createElement('div');
+swapModalContent.classList.add('swapModalContent')
+
+swapModal.appendChild(swapModalContent)
+
+swapButton.addEventListener("click", ()=>{
+    let body = document.querySelector('body')
+    body.appendChild(swapModal)
+    swapModalContent.innerHTML = '';
+
+    let swapDescription = document.createElement('div')
+    swapDescription.classList.add('swap-description')
+    swapDescription.innerHTML = `You are swapping: <br><br>
+                                ${assetAmt.value} ${assetButton.textContent}(${inputPrice.innerHTML})<br><br>
+                                For: <br><br>
+                                ${assetAmt2.value} ${assetButton2.textContent}(${inputPrice2.innerHTML})<br><br>`
+
+    swapModalContent.appendChild(swapDescription)
+
+    const confirmSwapButton = document.createElement('button')
+    confirmSwapButton.classList.add('confirm-button')
+    confirmSwapButton.innerHTML = "Confirm Swap"
+
+    swapModalContent.appendChild(confirmSwapButton)
+   
+    swapModal.style.display = 'block';
+})
+
+// hide modal when clicking outside of it
+window.addEventListener("click", (e)=>{
+    if(e.target === swapModalContent || e.target === swapButton) {
+        return;
+    }
+    swapModal.style.display = 'none';
+});
