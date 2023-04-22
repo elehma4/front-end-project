@@ -37,14 +37,18 @@
     padding-top: 5px;
     padding-bottom: 5px;
 }
-.coinNames{
-    /* position: relative;
-    left: 15px; */
-}
 .prices{
     display: flex;
     flex-direction: column;
-    /* align-items: flex-end; */
+}
+.contentContainer{
+    height: 100%;
+}
+.totalBalance{
+    position: relative;
+    top: 134px;
+    text-align: center;
+
 }
 @media only screen and (max-width: 500px) {
     .volumes{
@@ -68,7 +72,7 @@
        
     }
     .contentContainer{
-        position: relative;
+        /* position: relative; */
         height: 100%;
         display: flex;
         justify-content: center;

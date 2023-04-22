@@ -73,6 +73,33 @@ let getPrices = ()=>{
     .then(results => results.json())
     .then(tokenData=>{
 
+        let totalBalanceVal = 0;
+        let coins = parsed.assets;
+    
+        // for loop to calculate total balance value of user owned coins
+
+        for(let coin in coins){
+
+            let userCoinAmount = parsed.assets[coin];
+
+            if(coin === 'usdc'){
+                coin = 'usd-coin';
+            }
+
+            let coinPrice = tokenData[coin].usd
+
+            coinVal = userCoinAmount * coinPrice;
+
+            totalBalanceVal += coinVal
+    
+        }
+
+        let shortened = "$" + totalBalanceVal.toFixed(2);
+        console.log(shortened);
+
+        let totalBalance = document.querySelector('.totalBalance');
+        totalBalance.innerText += " " + shortened;
+
         let length = Object.keys(tokenData).length;
 
         for(let i = 0; i < length; i++){
@@ -156,17 +183,6 @@ let getPrices = ()=>{
         }
 
     })
-
-let totalBalanceVal = 0;
-console.log(totalBalanceVal);
-console.log(volumes);
-for(let val in volumes){
-    console.log(val);
-    let dollarStr = val.innerText;
-    let num = Number(dollarStr.substring(1));
-    totalBalanceVal += num;
-}
-console.log(totalBalanceVal);
 
 }
 
