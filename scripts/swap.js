@@ -213,16 +213,31 @@ async function inputPriceFunction(){
 
                 inputPrice.innerHTML = `$${(Number(assetAmt) * usdValue).toFixed(2)}`;
                 // console.log(inputPrice.innerHTML);      
-                
-                // Update other assetAmt field to be 1:1 worth the value in USD
-                let otherAssetAmt = document.querySelector('.assetAmt2');
-                let otherInputPrice = document.querySelector('#inputPrice2');
-                const otherUsdValue = 
-                console.log(otherUsdValue);
-                otherAssetAmt.value = (Number(inputPrice.innerHTML.slice(1)) / otherUsdValue).toFixed(6);
-                otherInputPrice.innerHTML = `$${Number(otherAssetAmt.value).toFixed(2)}`;
             })
+            
         }
+
+            let asset2 = assetButton2.textContent
+            if(asset2 == value.ticker){
+                asset2 = value.name
+                console.log(asset2);
+            }
+            await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${asset2}&vs_currencies=usd&precision=full`)
+                .then(results=>results.json())
+                .then(price =>{
+                try{
+                    // Update other assetAmt field to be 1:1 worth the value in USD
+                    let otherAssetAmt = document.querySelector('.assetAmt2');
+                    let otherInputPrice = document.querySelector('#inputPrice2');
+                    const otherUsdValue = price[asset2].usd
+                    console.log(otherUsdValue);
+                    otherAssetAmt.value = (Number(inputPrice.innerHTML.slice(1)) / otherUsdValue).toFixed(4);
+                    otherInputPrice.innerHTML = `$${Number(otherAssetAmt.value).toFixed(2)}`;
+                }
+                catch(err){
+                    console.log('solving...');
+                }
+            })
     }
 }
 async function inputPriceFunction2(){
@@ -236,14 +251,14 @@ async function inputPriceFunction2(){
             fetch(url)
             .then(results=>results.json())
             .then(price =>{
-                let assetAmt2 = document.querySelector('.assetAmt2').value
-                let inputPrice2 = document.querySelector('#inputPrice2')
-                // console.log(price);
-                const usdValue = price[coinForConversion].usd;
-                console.log(usdValue);
+                    let assetAmt2 = document.querySelector('.assetAmt2').value
+                    let inputPrice2 = document.querySelector('#inputPrice2')
+                    // console.log(price);
+                    const usdValue = price[coinForConversion].usd;
+                    console.log(usdValue);
 
-                inputPrice2.innerHTML = `$${(Number(assetAmt2) * usdValue).toFixed(2)}`;
-                // console.log(inputPrice2.innerHTML);
+                    inputPrice2.innerHTML = `$${(Number(assetAmt2) * usdValue).toFixed(2)}`;
+                    // console.log(inputPrice2.innerHTML);
             })
         }
         
@@ -299,7 +314,7 @@ async function inputPriceFunction2(){
                             let otherInputPrice = document.querySelector('#inputPrice');
                             const otherUsdValue = price[asset1].usd
                             console.log(otherUsdValue);
-                            otherAssetAmt.value = (Number(inputPrice2.innerHTML.slice(1)) / otherUsdValue).toFixed(6);
+                            otherAssetAmt.value = (Number(inputPrice2.innerHTML.slice(1)) / otherUsdValue).toFixed(4);
                             otherInputPrice.innerHTML = `$${Number(otherAssetAmt.value).toFixed(2)}`;
                     } 
                     catch(err){
