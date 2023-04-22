@@ -71,7 +71,7 @@
 
                 <div class="swap2 bg-opac">
                   <div class="sellAsset">
-                    <input class="assetAmt" placeholder="0" type="text" inputmode="decimal" onkeyup="inputPriceFunction()"></input>
+                    <input class="assetAmt" placeholder="0" type="text" inputmode="decimal" onkeyup="inputPriceFunction()" oninput="inputPriceFunction()"></input>
                     <button class="assetButton"><img id="thumbImg1" src="https://assets.coingecko.com/coins/images/6319/thumb/USD_Coin_icon.png">USDC</button>
                   </div>
                   <div class="priceAsset">
@@ -82,7 +82,7 @@
 
                 <div class="swap3">
                   <div class="bg-opac buy-asset">
-                    <input class="assetAmt2" placeholder="0" type="text" inputmode="decimal" onkeyup="inputPriceFunction2()"></input>
+                    <input class="assetAmt2" placeholder="0" type="text" inputmode="decimal" readonly="readonly"></input>
                     <button class="assetButton2"><img src="https://assets.coingecko.com/coins/images/279/thumb/ethereum.png">ETH</button>
                     <div class="priceAsset2">
                       <div id="inputPrice2">$0.00</div>

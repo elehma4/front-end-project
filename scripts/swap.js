@@ -38,15 +38,6 @@ const coins = {
     }
   };
 
-
-
-// fetch(url)
-// .then(results=>results.json())
-// .then(price => {
-//     // console.log(price);
-//     console.log(price.bitcoin.usd); //price of coin vs usd
-// })
-
 // Asset Button Modal Pop-up
 let assetButton = document.querySelector('.assetButton')
 
@@ -63,12 +54,11 @@ assetModalContent.classList.add('assetModalContent')
 // assetModalContent.appendChild(selectToken)
 assetModal.appendChild(assetModalContent)
 
-
 // show/hide modal
 assetButton.addEventListener("click", (e)=>{
     let body = document.querySelector('body')
     body.appendChild(assetModal)
-    console.log(e);
+    // console.log(e);
     assetModalContent.innerHTML = '';
     //? Create buttons for each key-value pair in coins object:
     for (const [key, value] of Object.entries(coins)){
@@ -118,7 +108,6 @@ window.addEventListener("click", (e)=>{
     // console.log(assetButton.textContent);
 });
 
-
 // Asset Button2 Modal Pop-up
 let assetButton2 = document.querySelector('.assetButton2')
 
@@ -135,12 +124,11 @@ assetModalContent2.classList.add('assetModalContent2')
 // assetModalContent.appendChild(selectToken)
 assetModal2.appendChild(assetModalContent2)
 
-
 // show/hide modal
 assetButton2.addEventListener("click", (e)=>{
     let body = document.querySelector('body')
     body.appendChild(assetModal2)
-    console.log(e);
+    // console.log(e);
     assetModalContent2.innerHTML = '';
     //? Create buttons for each key-value pair in coins object:
     for (const [key, value] of Object.entries(coins)){
@@ -189,181 +177,51 @@ window.addEventListener("click", (e)=>{
     assetModal2.style.display = 'none';
     // console.log(assetButton2.textContent);
 });
-
 // console.log(assetModal);
 
-// Price of asset selected in asset button
 
-async function inputPriceFunction(){
+// PRICE CONVERSIONS & QUANTITY INPUTS:
+
+let assetAmt = document.querySelector('.assetAmt')
+let inputPrice = document.querySelector('#inputPrice')
+let assetAmt2 = document.querySelector('.assetAmt2')
+let inputPrice2 = document.querySelector('#inputPrice2')
+let comparePrice = document.querySelector('#comparePrice')
+
+let coin1usdValue;
+let coin2usdValue;
+const inputPriceFunction = () => {
     for (const [key, value] of Object.entries(coins)){
+        // Get price in USD of asset 1:
         if(assetButton.textContent == value.ticker){
-            coinForConversion = value.name
-            // console.log(value.name); //gets name of current asset in button for api
-            // console.log(typeof(value.name));
-            let url = `https://api.coingecko.com/api/v3/simple/price?ids=${coinForConversion}&vs_currencies=usd&precision=full`
-            await wait(555)
-            await fetch(url)
-            .then(results=>results.json())
-            .then(price =>{
-                let assetAmt = document.querySelector('.assetAmt').value
-                let inputPrice = document.querySelector('#inputPrice')
-                // console.log(price);
-                const usdValue = price[coinForConversion].usd;
-                console.log(usdValue);
-
-                inputPrice.innerHTML = `$${(Number(assetAmt) * usdValue).toFixed(2)}`;
-                // console.log(inputPrice.innerHTML);                      
-            })
-            
-        }
-        async function priceComparison(){
-            try{
-                let inputPrice2 = document.querySelector('#inputPrice2')
-                let assetAmt2 = document.querySelector('.assetAmt2').value
-                let comparePrice = document.querySelector('#comparePrice') 
-                if(assetAmt2 > 1){
-                    const settle = Number(inputPrice2.innerHTML.slice(1)) / assetAmt2
-                    const solveOver1 = settle / usdValue
-                    const over1Rate = solveOver1.toFixed(4)
-                    comparePrice.innerHTML = `1 ${assetButton2.textContent} = ${over1Rate} ${assetButton.textContent}`
-                } else if (assetAmt2 == 1){
-                    const solve = Number(inputPrice2.innerHTML.slice(1)) / usdValue
-                    const rate = solve.toFixed(4)
-                    comparePrice.innerHTML = `1 ${assetButton2.textContent} = ${rate} ${assetButton.textContent}`
-                } else if (assetAmt2 > 0){
-                    const temp = Number(inputPrice2.innerHTML.slice(1)) / assetAmt2
-                    const settleUnder1 = temp / usdValue
-                    const under1Rate = settleUnder1.toFixed(4)
-                    comparePrice.innerHTML = `1 ${assetButton2.textContent} = ${under1Rate} ${assetButton.textContent}`
-                } else if (assetAmt2 < 0) {
-                    comparePrice.innerHTML = 'invalid input'
-                    return
-                }
-            }
-            catch(err){
-                console.log('solving...');
-            }
-        }
-        async function callpriceComparison(){
-            await priceComparison()
-        }
-        callpriceComparison()
-
-            let asset2 = assetButton2.textContent
-            if(asset2 == value.ticker){
-                asset2 = value.name
-                console.log(asset2);
-            }
-            wait(555)
-            await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${asset2}&vs_currencies=usd&precision=full`)
-                .then(results=>results.json())
-                .then(price =>{
-                try{
-                    // Update other assetAmt field to be 1:1 worth the value in USD
-                    let otherAssetAmt = document.querySelector('.assetAmt2');
-                    let otherInputPrice = document.querySelector('#inputPrice2');
-                    const otherUsdValue = price[asset2].usd
-                    console.log(otherUsdValue);
-                    otherAssetAmt.value = (Number(inputPrice.innerHTML.slice(1)) / otherUsdValue).toFixed(4);
-                    otherInputPrice.innerHTML = `$${Number(otherAssetAmt.value).toFixed(2)}`;
-                }
-                catch(err){
-                    console.log('solving...');
-                }
-            })
-    }
-}
-async function inputPriceFunction2(){
-    for (const [key, value] of Object.entries(coins)){
-        if(assetButton2.textContent == value.ticker){
-            coinForConversion = value.name
-            // console.log(value.name); //gets name of current asset in button for api
-            // console.log(typeof(value.name));
-            let url = `https://api.coingecko.com/api/v3/simple/price?ids=${coinForConversion}&vs_currencies=usd&precision=full`
-            
+            let coin1name = value.name;
+            let url = `https://api.coingecko.com/api/v3/simple/price?ids=${coin1name}&vs_currencies=usd&precision=full`
             fetch(url)
-            .then(results=>results.json())
-            .then(price =>{
-                    let assetAmt2 = document.querySelector('.assetAmt2').value
-                    let inputPrice2 = document.querySelector('#inputPrice2')
-                    // console.log(price);
-                    const usdValue = price[coinForConversion].usd;
-                    console.log(usdValue);
-
-                    inputPrice2.innerHTML = `$${(Number(assetAmt2) * usdValue).toFixed(2)}`;
-                    // console.log(inputPrice2.innerHTML);
+                .then(results => results.json())
+                .then(price => {
+                    let usdValue = price[coin1name].usd;
+                    console.log(usdValue); //logs 1x value of coin
+                    let coin1usdValue = Number(assetAmt.value) * Number(usdValue);
+                    console.log(Number(coin1usdValue));
+                    inputPrice.innerHTML = `$${Number(coin1usdValue).toFixed(2)}`
             })
         }
-        
-        // COMPARE PRICE
-        let comparePrice = document.querySelector('#comparePrice') 
-        let asset1 = assetButton.textContent
-        if(value.ticker == asset1){
-            asset1 = value.name
-            console.log(asset1);
-        }
-        let asset2 = assetButton2.textContent
-        if(asset2 == value.ticker){
-            asset2 = value.name
-            console.log(asset2);
-        }
-
-        async function compareAssets(){
-            await wait(555)
-            await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${asset1}&vs_currencies=usd&precision=full`)
-                .then(results=>results.json())
-                .then(price =>{
-                    // console.log(typeof(price));
-                    try{
-                        console.log(price[asset1].usd);
-                    }
-                    catch(err){
-                        console.log('price data');
-                    }
-                    // let inputPrice2 = document.querySelector('#inputPrice2')
-                    // console.log(Number(inputPrice2.innerHTML.slice(1)));
-                    try{
-                        let assetAmt2 = document.querySelector('.assetAmt2').value
-                        if(assetAmt2 > 1){
-                            const settle = Number(inputPrice2.innerHTML.slice(1)) / assetAmt2
-                            const solveOver1 = settle / price[asset1].usd
-                            const over1Rate = solveOver1.toFixed(4)
-                            comparePrice.innerHTML = `1 ${assetButton2.textContent} = ${over1Rate} ${assetButton.textContent}`
-                        } else if (assetAmt2 == 1){
-                            const solve = Number(inputPrice2.innerHTML.slice(1)) / price[asset1].usd
-                            const rate = solve.toFixed(4)
-                            comparePrice.innerHTML = `1 ${assetButton2.textContent} = ${rate} ${assetButton.textContent}`
-                        } else if (assetAmt2 > 0){
-                            const temp = Number(inputPrice2.innerHTML.slice(1)) / assetAmt2
-                            const settleUnder1 = temp / price[asset1].usd
-                            const under1Rate = settleUnder1.toFixed(4)
-                            comparePrice.innerHTML = `1 ${assetButton2.textContent} = ${under1Rate} ${assetButton.textContent}`
-                        } else if (assetAmt2 < 0) {
-                            comparePrice.innerHTML = 'invalid input'
-                            return
-                        }
-                        // Update other assetAmt field to be 1:1 worth the value in USD
-                            let otherAssetAmt = document.querySelector('.assetAmt');
-                            let otherInputPrice = document.querySelector('#inputPrice');
-                            const otherUsdValue = price[asset1].usd
-                            console.log(otherUsdValue);
-                            otherAssetAmt.value = (Number(inputPrice2.innerHTML.slice(1)) / otherUsdValue).toFixed(4);
-                            otherInputPrice.innerHTML = `$${Number(otherAssetAmt.value).toFixed(2)}`;
-                    } 
-                    catch(err){
-                        console.log('solving...');
-                    }
+        // Get price in USD of asset 2:
+        if(assetButton2.textContent == value.ticker){
+            let coin2name = value.name;
+            console.log(coin2name);
+            let url = `https://api.coingecko.com/api/v3/simple/price?ids=${coin2name}&vs_currencies=usd&precision=full`
+            fetch(url)
+                .then(results => results.json())
+                .then(price => {
+                    otherUsdValue = price[coin2name].usd
+                    console.log(otherUsdValue);
+                    let coin1UsdValue = Number(inputPrice.innerHTML.slice(1))
+                    let evaluateOther = coin1UsdValue / otherUsdValue
+                    assetAmt2.value = Number(evaluateOther).toFixed(4)
+                    let coin2usdValue = Number(assetAmt2.value) * Number(otherUsdValue)
+                    inputPrice2.innerHTML = `$${Number(coin2usdValue).toFixed(2)}`
                 })
-            // console.log(asset1price);
-            // rate = Number(priceinput2.innerHTML) / asset1price
-        }
-        async function callCompareAssets(){
-            await compareAssets()
-        }
-        callCompareAssets()
+        }            
     }
-}
-
-function wait(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
 }
