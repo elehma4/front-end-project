@@ -221,10 +221,15 @@ const inputPriceFunction = () => {
                     assetAmt2.value = Number(evaluateOther).toFixed(4)
                     let coin2usdValue = Number(assetAmt2.value) * Number(otherUsdValue)
                     inputPrice2.innerHTML = `$${Number(coin2usdValue).toFixed(2)}`
+
+                    comparePrice.innerHTML = `1 ${assetButton2.textContent} = ($${otherUsdValue.toFixed(2)})`
                 })
         }            
     }
+    // const rate = Number(assetAmt.value) / Number(assetAmt2.value)
+    // comparePrice.innerHTML = `1 ${assetButton2.textContent} = ${Number(rate)} ${assetButton.textContent}`
 }
+
 
 let swapButton = document.querySelector('.swapBtn')
 
