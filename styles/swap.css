@@ -292,3 +292,19 @@
     font-family: Alegreya SC Regular;
     color: #333333
 }
+.switch{
+    z-index: 333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1px;
+    background-color: #FEFEE2;
+    border: 0px;
+}
+#switchIcon{
+    background-color: #FEFEE2;
+    border-radius: 5px;
+}
+#switchIcon:hover{
+    cursor: pointer;
+}
