@@ -179,6 +179,20 @@ window.addEventListener("click", (e)=>{
 });
 // console.log(assetModal);
 
+// SWITCH BUTTON
+
+let switchButton = document.querySelector('#switchIcon')
+
+switchButton.addEventListener('click', ()=>{
+    let tempButtonHTML = assetButton.innerHTML;
+    let tempAssetAmtValue = assetAmt.value;
+
+    assetButton.innerHTML = assetButton2.innerHTML;
+    assetAmt.value = assetAmt2.value;
+
+    assetButton2.innerHTML = tempButtonHTML;
+    assetAmt2.value = tempAssetAmtValue;
+})
 
 // PRICE CONVERSIONS & QUANTITY INPUTS:
 
@@ -213,7 +227,7 @@ const inputPriceFunction = () => {
             let url = `https://api.coingecko.com/api/v3/simple/price?ids=${coin2name}&vs_currencies=usd&precision=full`
             fetch(url)
                 .then(results => results.json())
-                .then(price => {
+                .then(async price => {
                     otherUsdValue = price[coin2name].usd
                     console.log(otherUsdValue);
                     let coin1UsdValue = Number(inputPrice.innerHTML.slice(1))
@@ -222,13 +236,22 @@ const inputPriceFunction = () => {
                     let coin2usdValue = Number(assetAmt2.value) * Number(otherUsdValue)
                     inputPrice2.innerHTML = `$${Number(coin2usdValue).toFixed(2)}`
 
-                    comparePrice.innerHTML = `1 ${assetButton2.textContent} = ($${otherUsdValue.toFixed(2)})`
+                    async function comparePriceOf1Asset() {
+                        if(assetAmt.value){
+                            // console.log(inputPrice.textContent.slice(1));
+                            const coin1val = Number(inputPrice.textContent.slice(1)) / Number(assetAmt.value)
+                            console.log(coin1val);
+                            const rate = otherUsdValue / coin1val
+                            console.log(rate);
+                            comparePrice.innerHTML = `1 ${assetButton2.textContent} = ${Number(rate).toFixed(4)} ${assetButton.textContent} ($${otherUsdValue.toFixed(2)})`
+                        }
+                    }
+                    await comparePriceOf1Asset()
                 })
         }            
     }
-    // const rate = Number(assetAmt.value) / Number(assetAmt2.value)
-    // comparePrice.innerHTML = `1 ${assetButton2.textContent} = ${Number(rate)} ${assetButton.textContent}`
 }
+
 
 
 let swapButton = document.querySelector('.swapBtn')
@@ -271,3 +294,4 @@ window.addEventListener("click", (e)=>{
     }
     swapModal.style.display = 'none';
 });
+
