@@ -311,3 +311,16 @@ confirmButton.addEventListener('click', ()=>{
         }
     }
 })
+
+let maxButton = document.querySelector('.maxBtn')
+
+maxButton.addEventListener('click', ()=>{
+    // make assetAmt the total value of balance
+
+})
+
+let balance1 = document.querySelector('balance1')
+balance1.textContent // "Balance: ${localstorage balance}"
+
+let balance2 = document.querySelector('balance2')
+balance2.textContent // "Balance: ${localstorage balance}"
