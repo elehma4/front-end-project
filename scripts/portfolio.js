@@ -147,6 +147,8 @@ let getPrices = ()=>{
             marketCapVal.setAttribute('class', 'dataValue');
             let cap = parsed.assets[key];
             // cap = shortNum(cap);
+            // cap = Number(cap.substring(1));
+            cap = cap.toFixed(2);
             marketCapVal.innerText = cap;
             marketCap.append(marketCapVal);
 

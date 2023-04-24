@@ -93,6 +93,7 @@ assetButton.addEventListener("click", (e)=>{
             const selectedCoin = coins[value.name];
             assetButton.innerHTML = `<img src="${selectedCoin.thumb}" alt="${selectedCoin.ticker} logo">${selectedCoin.ticker}`;
             assetModal.style.display = 'none';
+            inputPriceFunction();
         });
         
     }
@@ -163,6 +164,7 @@ assetButton2.addEventListener("click", (e)=>{
             const selectedCoin = coins[value.name];
             assetButton2.innerHTML = `<img src="${selectedCoin.thumb}" alt="${selectedCoin.ticker} logo">${selectedCoin.ticker}`;
             assetModal2.style.display = 'none';
+            inputPriceFunction();
         });
         
     }
@@ -204,7 +206,7 @@ let comparePrice = document.querySelector('#comparePrice')
 
 let coin1usdValue;
 let coin2usdValue;
-const inputPriceFunction = () => {
+const inputPriceFunction = async () => {
     for (const [key, value] of Object.entries(coins)){
         // Get price in USD of asset 1:
         if(assetButton.textContent == value.ticker){
@@ -282,6 +284,45 @@ swapButton.addEventListener("click", ()=>{
     confirmSwapButton.classList.add('confirm-button')
     confirmSwapButton.innerHTML = "Confirm Swap"
 
+    confirmSwapButton.addEventListener('click', ()=>{
+
+        let storage = window.localStorage;
+        let name = connectBtn.innerText;
+        console.log(name);
+        console.log(storage);
+        let parsed = JSON.parse(storage[name]);
+        console.log(parsed);
+        let collection = parsed.assets;
+        console.log(collection);
+        for(let [key, value] of Object.entries(coins)){
+            if(assetButton.textContent == value.ticker){
+                let coin1name = value.name;
+                if(coin1name === "usd-coin"){
+                    coin1name = 'usdc';
+                }
+                collection[coin1name] -= Number(assetAmt.value);
+
+                console.log(collection[coin1name]);
+                console.log(assetAmt.value);
+                
+    
+                // find coin1name local storage balance
+                // subtract assetAmt value from balance 
+            }
+            if(assetButton2.textContent == value.ticker){
+                let coin2name = value.name;
+                if(coin2name === "usd-coin"){
+                    coin2name = 'usdc';
+                }
+                collection[coin2name] += Number(assetAmt2.value);
+                // find coin2name local storage balance
+                // add assetAmt2 value to balance
+            }
+        }
+        storage[name] = JSON.stringify(parsed);
+        console.log(storage[name]);
+    })
+
     swapModalContent.appendChild(confirmSwapButton)
    
     swapModal.style.display = 'block';
@@ -295,32 +336,104 @@ window.addEventListener("click", (e)=>{
     swapModal.style.display = 'none';
 });
 
-let confirmButton = document.querySelector('.confirm-button')
+const shortenDecimals = (num) => {
 
-confirmButton.addEventListener('click', ()=>{
+    let num2Str = String(num)
+    let splitStr = num2Str.split("");
+    let sub = "";
+    if(splitStr.includes(".")){
+        sub = splitStr.splice(0, (splitStr.indexOf("."))+4);
+        subJoined = sub.join("");
+        result = Number(subJoined)
+
+    } else{
+        result = num;
+    }
+    return result;
+}
+
+const calcMax = async () => {
+
+    let storage = window.localStorage;
+    let name = connectBtn.innerText;
+    console.log(name);
+    console.log(storage);
+    let parsed = JSON.parse(storage[name]);
+    console.log(parsed);
+    let collection = parsed.assets;
+    console.log(collection);
+
     for(let [key, value] of Object.entries(coins)){
         if(assetButton.textContent == value.ticker){
             let coin1name = value.name;
-            // find coin1name local storage balance
-            // subtract assetAmt value from balance 
-        }
-        if(assetButton2.textContent == value.ticker){
-            let coin2name = value.name;
-            // find coin2name local storage balance
-            // add assetAmt2 value to balance
-        }
+            if(coin1name === "usd-coin"){
+                coin1name = 'usdc';
+            }
+            assetAmt.value = shortenDecimals(collection[coin1name]);
+            
+        } 
     }
-})
+}
+
+const callCalcMax = async () => {
+
+    calcMax();
+    await inputPriceFunction(); 
+}
 
 let maxButton = document.querySelector('.maxBtn')
 
-maxButton.addEventListener('click', ()=>{
-    // make assetAmt the total value of balance
+maxButton.addEventListener('click', callCalcMax)
+
+let mainSwap = document.querySelector('.mainSwap');
+mainSwap.addEventListener('mousemove', (e) => {
+
+    let storage = window.localStorage;
+let user = connectBtn.innerText;
+// console.log(user);
+// console.log(storage);
+let parsed = JSON.parse(storage[user]);
+// console.log(parsed);
+let collection = parsed.assets;
+// console.log(collection);
+
+for(let [key, value] of Object.entries(coins)){
+    if(assetButton.textContent == value.ticker){
+        let coin1name = value.name;
+        if(coin1name === "usd-coin"){
+            coin1name = 'usdc';
+        }
+        
+        let balance1 = document.querySelector('.balance1')
+        balance1.textContent = "Balance: " + shortenDecimals(collection[coin1name])// "Balance: ${localstorage balance}"
+        // console.log(collection[coin1name]);
+
+        
+        
+    }
+    if(assetButton2.textContent == value.ticker){
+        let coin2name = value.name;
+        if(coin2name === "usd-coin"){
+            coin2name = 'usdc';
+        }
+        
+        let balance2 = document.querySelector('.balance2')
+        balance2.textContent = "Balance: " + shortenDecimals(collection[coin2name]) // "Balance: ${localstorage balance}"
+        
+    }
+}
+
 
 })
-
-let balance1 = document.querySelector('balance1')
-balance1.textContent // "Balance: ${localstorage balance}"
-
-let balance2 = document.querySelector('balance2')
-balance2.textContent // "Balance: ${localstorage balance}"
+// assetModalContent.addEventListener('click', (e) => {
+//     inputPrice.innerText = "$0.00";
+//     inputPrice2.innerText = "$0.00"
+//     assetAmt.value = "";
+//     assetAmt2.value = "";
+// })
+// assetModalContent2.addEventListener('click', (e) => {
+//     inputPrice.innerText = "$0.00";
+//     inputPrice2.innerText = "$0.00"
+//     assetAmt.value = "";
+//     assetAmt2.value = "";
+// })
