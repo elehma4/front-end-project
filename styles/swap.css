@@ -310,3 +310,6 @@
 #switchIcon:hover{
     cursor: pointer;
 }
+.balanceAndMax{
+    display: flex;
+}
