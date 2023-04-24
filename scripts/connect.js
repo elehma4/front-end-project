@@ -40,13 +40,13 @@ class User {
             balance: this.balance,
             loggedIn: this.loggedIn,
             assets: {
-                bitcoin: 0,
-                ethereum: 0,
-                usdc: 10000,
-                dogecoin: 0,
-                arbitrum: 0,
-                gmx: 0,
-                magic: 0,
+                bitcoin: 1,
+                ethereum: 10,
+                usdc: 100000,
+                dogecoin: 10000,
+                arbitrum: 10000,
+                gmx: 100,
+                magic: 1000,
             }
         }
         localStorage[userName] = JSON.stringify(userObj);
