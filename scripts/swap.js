@@ -38,15 +38,6 @@ const coins = {
     }
   };
 
-
-
-// fetch(url)
-// .then(results=>results.json())
-// .then(price => {
-//     // console.log(price);
-//     console.log(price.bitcoin.usd); //price of coin vs usd
-// })
-
 // Asset Button Modal Pop-up
 let assetButton = document.querySelector('.assetButton')
 
@@ -63,12 +54,11 @@ assetModalContent.classList.add('assetModalContent')
 // assetModalContent.appendChild(selectToken)
 assetModal.appendChild(assetModalContent)
 
-
 // show/hide modal
 assetButton.addEventListener("click", (e)=>{
     let body = document.querySelector('body')
     body.appendChild(assetModal)
-    console.log(e);
+    // console.log(e);
     assetModalContent.innerHTML = '';
     //? Create buttons for each key-value pair in coins object:
     for (const [key, value] of Object.entries(coins)){
@@ -118,7 +108,6 @@ window.addEventListener("click", (e)=>{
     // console.log(assetButton.textContent);
 });
 
-
 // Asset Button2 Modal Pop-up
 let assetButton2 = document.querySelector('.assetButton2')
 
@@ -135,12 +124,11 @@ assetModalContent2.classList.add('assetModalContent2')
 // assetModalContent.appendChild(selectToken)
 assetModal2.appendChild(assetModalContent2)
 
-
 // show/hide modal
 assetButton2.addEventListener("click", (e)=>{
     let body = document.querySelector('body')
     body.appendChild(assetModal2)
-    console.log(e);
+    // console.log(e);
     assetModalContent2.innerHTML = '';
     //? Create buttons for each key-value pair in coins object:
     for (const [key, value] of Object.entries(coins)){
@@ -189,147 +177,150 @@ window.addEventListener("click", (e)=>{
     assetModal2.style.display = 'none';
     // console.log(assetButton2.textContent);
 });
-
 // console.log(assetModal);
 
-// Price of asset selected in asset button
+// SWITCH BUTTON
 
-function inputPriceFunction(){
+let switchButton = document.querySelector('#switchIcon')
+
+switchButton.addEventListener('click', ()=>{
+    let tempButtonHTML = assetButton.innerHTML;
+    let tempAssetAmtValue = assetAmt.value;
+
+    assetButton.innerHTML = assetButton2.innerHTML;
+    assetAmt.value = assetAmt2.value;
+
+    assetButton2.innerHTML = tempButtonHTML;
+    assetAmt2.value = tempAssetAmtValue;
+})
+
+// PRICE CONVERSIONS & QUANTITY INPUTS:
+
+let assetAmt = document.querySelector('.assetAmt')
+let inputPrice = document.querySelector('#inputPrice')
+let assetAmt2 = document.querySelector('.assetAmt2')
+let inputPrice2 = document.querySelector('#inputPrice2')
+let comparePrice = document.querySelector('#comparePrice')
+
+let coin1usdValue;
+let coin2usdValue;
+const inputPriceFunction = () => {
     for (const [key, value] of Object.entries(coins)){
+        // Get price in USD of asset 1:
         if(assetButton.textContent == value.ticker){
-            coinForConversion = value.name
-            // console.log(value.name); //gets name of current asset in button for api
-            // console.log(typeof(value.name));
-            let url = `https://api.coingecko.com/api/v3/simple/price?ids=${coinForConversion}&vs_currencies=usd&precision=full`
-            
+            let coin1name = value.name;
+            let url = `https://api.coingecko.com/api/v3/simple/price?ids=${coin1name}&vs_currencies=usd&precision=full`
             fetch(url)
-            .then(results=>results.json())
-            .then(price =>{
-                let assetAmt = document.querySelector('.assetAmt').value
-                let inputPrice = document.querySelector('#inputPrice')
-                console.log(price);
-                const usdValue = price[coinForConversion].usd;
-                console.log(usdValue);
-
-                inputPrice.innerHTML = `$${(Number(assetAmt) * usdValue).toFixed(2)}`;
-
-                console.log(inputPrice.innerHTML);
-
-
+                .then(results => results.json())
+                .then(price => {
+                    let usdValue = price[coin1name].usd;
+                    console.log(usdValue); //logs 1x value of coin
+                    let coin1usdValue = Number(assetAmt.value) * Number(usdValue);
+                    console.log(Number(coin1usdValue));
+                    inputPrice.innerHTML = `$${Number(coin1usdValue).toFixed(2)}`
             })
-
         }
-        
-    }
-}
-function inputPriceFunction2(){
-    for (const [key, value] of Object.entries(coins)){
+        // Get price in USD of asset 2:
         if(assetButton2.textContent == value.ticker){
-            coinForConversion = value.name
-            // console.log(value.name); //gets name of current asset in button for api
-            // console.log(typeof(value.name));
-            let url = `https://api.coingecko.com/api/v3/simple/price?ids=${coinForConversion}&vs_currencies=usd&precision=full`
-            
+            let coin2name = value.name;
+            console.log(coin2name);
+            let url = `https://api.coingecko.com/api/v3/simple/price?ids=${coin2name}&vs_currencies=usd&precision=full`
             fetch(url)
-            .then(results=>results.json())
-            .then(price =>{
-                let assetAmt2 = document.querySelector('.assetAmt2').value
-                let inputPrice2 = document.querySelector('#inputPrice2')
-                // console.log(price);
-                const usdValue = price[coinForConversion].usd;
-                // console.log(usdValue);
+                .then(results => results.json())
+                .then(async price => {
+                    otherUsdValue = price[coin2name].usd
+                    console.log(otherUsdValue);
+                    let coin1UsdValue = Number(inputPrice.innerHTML.slice(1))
+                    let evaluateOther = coin1UsdValue / otherUsdValue
+                    assetAmt2.value = Number(evaluateOther).toFixed(4)
+                    let coin2usdValue = Number(assetAmt2.value) * Number(otherUsdValue)
+                    inputPrice2.innerHTML = `$${Number(coin2usdValue).toFixed(2)}`
 
-                inputPrice2.innerHTML = `$${(Number(assetAmt2) * usdValue).toFixed(2)}`;
-
-                // console.log(inputPrice2.innerHTML);
-            })
-        }
-        
-        // COMPARE PRICE
-        let comparePrice = document.querySelector('#comparePrice') 
-        
-        let asset1 = assetButton.textContent
-        if(value.ticker == asset1){
-            asset1 = value.name
-            console.log(asset1);
-        }
-        let asset2 = assetButton2.textContent
-        if(asset2 == value.ticker){
-            asset2 = value.name
-            console.log(asset2);
-        }
-
-        async function compareAssets(){
-            await wait(777)
-            await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${asset1}&vs_currencies=usd&precision=full`)
-                .then(results=>results.json())
-                .then(price =>{
-                    // console.log(typeof(price));
-                    try{
-                    console.log(price[asset1].usd);
+                    async function comparePriceOf1Asset() {
+                        if(assetAmt.value){
+                            // console.log(inputPrice.textContent.slice(1));
+                            const coin1val = Number(inputPrice.textContent.slice(1)) / Number(assetAmt.value)
+                            console.log(coin1val);
+                            const rate = otherUsdValue / coin1val
+                            console.log(rate);
+                            comparePrice.innerHTML = `1 ${assetButton2.textContent} = ${Number(rate).toFixed(4)} ${assetButton.textContent} ($${otherUsdValue.toFixed(2)})`
+                        }
                     }
-                    catch(err){
-                        console.log('price data');
-                    }
-                    // let inputPrice2 = document.querySelector('#inputPrice2')
-                    // console.log(Number(inputPrice2.innerHTML.slice(1)));
-                    try{
-                    solve = Number(inputPrice2.innerHTML.slice(1)) / price[asset1].usd
-                    rate = solve.toFixed(2)
-                    comparePrice.innerHTML = `1 ${assetButton2.textContent} = ${rate} ${assetButton.textContent}`
-                    } catch(err){
-                        console.log('solving...');
-                    }
+                    await comparePriceOf1Asset()
                 })
-            // console.log(asset1price);
-            // rate = Number(priceinput2.innerHTML) / asset1price
-        }
-        async function callCompareAssets(){
-            await wait(333)
-            compareAssets()
-        }
-        callCompareAssets()
+        }            
     }
 }
 
-function wait(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
 
 
-// INPUT FIELD COMPARISON
+let swapButton = document.querySelector('.swapBtn')
 
-// event listeners to update inputs
-// assetAmt.addEventListener('input', ()=>{
-//     // get current input value 
-//     let value = Number(assetAmt.value);
-//     // get conversion rate
-//     let rate = getPriceConversionRate();
-//     // calculate converted value and update input
-//     assetAmt2.value = (value * rate).toFixed(8);
-// });
+// swap modal elements:
+let swapModal = document.createElement('div');
+swapModal.classList.add('swapModal')
+let swapModalContent = document.createElement('div');
+swapModalContent.classList.add('swapModalContent')
 
-// assetAmt2.addEventListener('input', ()=>{
-//     // get current input value 
-//     let value = Number(assetAmt2.value);
-//     // get conversion rate
-//     let rate = getPriceConversionRate();
-//     // calculate converted value and update input
-//     assetAmt.value = (value * rate).toFixed(8);
-// });
+swapModal.appendChild(swapModalContent)
 
-// // gets conversion rate between two assets
-// async function getPriceConversionRate(){
-//     // get assets
-//     let asset1 = coins[assetButton.dataset.coinName]
-//     let asset2 = coins[assetButton2.dataset.coinName]
-//     // conversion rate from API
-//     let conversionURL = `https://api.coingecko.com/api/v3/simple/price?ids=${asset1.name}&vs_currencies=${asset2.ticker}&precision=full`;
-//     return fetch(conversionURL)
-//         .then(results => results.json())
-//         .then(price=>{
-//             return price[asset1.name][asset2.ticker];
-//         })
-// }
+swapButton.addEventListener("click", ()=>{
+    let body = document.querySelector('body')
+    body.appendChild(swapModal)
+    swapModalContent.innerHTML = '';
 
+    let swapDescription = document.createElement('div')
+    swapDescription.classList.add('swap-description')
+    swapDescription.innerHTML = `You are swapping: <br><br>
+                                ${assetAmt.value} ${assetButton.textContent}(${inputPrice.innerHTML})<br><br>
+                                For: <br><br>
+                                ${assetAmt2.value} ${assetButton2.textContent}(${inputPrice2.innerHTML})<br><br>`
 
+    swapModalContent.appendChild(swapDescription)
+
+    const confirmSwapButton = document.createElement('button')
+    confirmSwapButton.classList.add('confirm-button')
+    confirmSwapButton.innerHTML = "Confirm Swap"
+
+    swapModalContent.appendChild(confirmSwapButton)
+   
+    swapModal.style.display = 'block';
+})
+
+// hide modal when clicking outside of it
+window.addEventListener("click", (e)=>{
+    if(e.target === swapModalContent || e.target === swapButton) {
+        return;
+    }
+    swapModal.style.display = 'none';
+});
+
+let confirmButton = document.querySelector('.confirm-button')
+
+confirmButton.addEventListener('click', ()=>{
+    for(let [key, value] of Object.entries(coins)){
+        if(assetButton.textContent == value.ticker){
+            let coin1name = value.name;
+            // find coin1name local storage balance
+            // subtract assetAmt value from balance 
+        }
+        if(assetButton2.textContent == value.ticker){
+            let coin2name = value.name;
+            // find coin2name local storage balance
+            // add assetAmt2 value to balance
+        }
+    }
+})
+
+let maxButton = document.querySelector('.maxBtn')
+
+maxButton.addEventListener('click', ()=>{
+    // make assetAmt the total value of balance
+
+})
+
+let balance1 = document.querySelector('balance1')
+balance1.textContent // "Balance: ${localstorage balance}"
+
+let balance2 = document.querySelector('balance2')
+balance2.textContent // "Balance: ${localstorage balance}"

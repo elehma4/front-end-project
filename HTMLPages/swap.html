@@ -62,7 +62,7 @@
             <main class="mainSwap">
                 <div class="swap1">
                     <div class="swap1swap">
-                      <b>Swap</b>
+                      <b style="color: #333333">Swap</b>
                     </div>
                     <div class="swap1settings">
                       <img id="settings" src="/images/settings-icon.svg" alt="">
@@ -71,22 +71,23 @@
 
                 <div class="swap2 bg-opac">
                   <div class="sellAsset">
-                    <input class="assetAmt" placeholder="0" type="text" inputmode="decimal" onkeyup="inputPriceFunction()"></input>
+                    <input class="assetAmt" placeholder="0" type="text" inputmode="decimal" onkeyup="inputPriceFunction()" oninput="inputPriceFunction()"></input>
                     <button class="assetButton"><img id="thumbImg1" src="https://assets.coingecko.com/coins/images/6319/thumb/USD_Coin_icon.png">USDC</button>
                   </div>
                   <div class="priceAsset">
                     <div id="inputPrice">$0.00</div>
-                    <div class="d-flex">Balance: 0 <div><button class="maxBtn">MAX</button></div></div>
+                    <div class="d-flex balance1">Balance: 0 <div><button class="maxBtn">MAX</button></div></div>
                   </div>
                 </div>
 
                 <div class="swap3">
+                  <div class="switch"><img id="switchIcon" src="/images/7124205_switch_vertical_icon.svg" alt=""></div>
                   <div class="bg-opac buy-asset">
-                    <input class="assetAmt2" placeholder="0" type="text" inputmode="decimal" onkeyup="inputPriceFunction2()"></input>
+                    <input class="assetAmt2" placeholder="0" type="text" inputmode="decimal" readonly="readonly"></input>
                     <button class="assetButton2"><img src="https://assets.coingecko.com/coins/images/279/thumb/ethereum.png">ETH</button>
                     <div class="priceAsset2">
                       <div id="inputPrice2">$0.00</div>
-                      <div class="d-flex">Balance: 0<div></div></div>
+                      <div class="d-flex balance2">Balance: 0<div></div></div>
                     </div>
                   </div>
                   <div class="bg-opac trade-comparison">

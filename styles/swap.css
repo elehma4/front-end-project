@@ -139,6 +139,8 @@
     padding: 15px 150px;
     font-size: x-large;
     border-radius: 15px;
+    background-color: #7FC37E;
+    color: #333333;
 }
 #settings:hover{
     cursor: pointer;
@@ -166,7 +168,9 @@
         padding: 15px 133px;
     }
 }
- /* Asset modal pop-up: */
+
+/* Asset modal pop-up: */
+
 .assetModal {
     z-index: 9999;
     display: none;
@@ -184,7 +188,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: white;
+    background-color: #FEFEE2;
+    color: #333333;
     padding: 10px;
     border-radius: 15px;
 }
@@ -218,7 +223,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: white;
+    background-color: #FEFEE2;
+    color: #333333;
     padding: 10px;
     border-radius: 15px;
 }
@@ -234,4 +240,73 @@
 }
 .thumb-img2{
     padding-right: 10px;
+}
+
+.swapModal {
+    z-index: 9999;
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(254,254,226, 0.9);
+}
+.swapModalContent {
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    height: 437px;
+    width: 370px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #FEFEE2;
+    color: #333333;
+    padding: 10px;
+    border-radius: 15px;
+}
+.confirm-button{
+    margin: 10px;
+    height: 90px;
+    width: 299px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: #FEFEE2;
+    font-size: x-large;
+    font-family: Alegreya SC Regular;
+    border: none;
+    background-color: #7FC37E;
+    cursor: pointer;
+    border-radius: 15px;
+}
+.confirm-button:hover{
+    color: #333333
+}
+.swap-description{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 15px;
+    font-size: 21px;
+    font-family: Alegreya SC Regular;
+    color: #333333
+}
+.switch{
+    z-index: 333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1px;
+    background-color: #FEFEE2;
+    border: 0px;
+}
+#switchIcon{
+    background-color: #FEFEE2;
+    border-radius: 5px;
+}
+#switchIcon:hover{
+    cursor: pointer;
 }
