@@ -1,0 +1,81 @@
+.whole-page{
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+}
+.navCon{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.content{
+    display: flex;
+    flex-direction: column;
+    border: solid black 2px;
+    border-radius: 25px;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.topRow{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: solid black 2px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+.gridContent{
+    padding-left: 30px;
+    padding-right: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.dataValue{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.prices{
+    display: flex;
+    flex-direction: column;
+}
+.contentContainer{
+    height: 100%;
+}
+.totalBalance{
+    position: relative;
+    top: 134px;
+    text-align: center;
+
+}
+@media only screen and (max-width: 500px) {
+    .volumes{
+        display: none;
+    }
+    #volumeTitle{
+        display: none;
+    }
+    .topRow{
+        font-size: 10px;
+    }
+    .dataValue{
+        font-size: 10px;
+    }
+    .whole-page{
+        padding: 0px;
+    }
+    .content{
+        width: 350px;
+        height: 200px;
+       
+    }
+    .contentContainer{
+        /* position: relative; */
+        height: 100%;
+        display: flex;
+        justify-content: center;
+
+    }
+  }
