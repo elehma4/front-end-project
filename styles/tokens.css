@@ -4,6 +4,8 @@
     width: 100%;
     background-color: #333333;
     align-items: center;
+    font-family: Alegreya SC Regular;
+
 }
 .navCon{
     padding-left: 20px;
@@ -26,6 +28,8 @@
     justify-content: center;
     padding-left: 33%;
     padding-right: 33%;
+    font-weight: bold;
+    padding-top: 7px;
 }
 .topRow{
     display: flex;
@@ -91,7 +95,23 @@
         justify-content: center;
 
     }
+    .tokensTitle{
+        font-size: 17px;
+    }
   }
+
+@media only screen and (max-width: 370px){
+    .tokensTitle{
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 695px){
+    .tokensTitle{
+        padding-left: 25%;
+        padding-right: 25%;
+    }
+}
 
 @media only screen and (min-width: 820px){
     .content{
