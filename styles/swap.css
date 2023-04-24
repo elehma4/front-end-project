@@ -166,7 +166,7 @@
         padding: 15px 133px;
     }
 }
-// Asset modal pop-up:
+ /* Asset modal pop-up: */
 .assetModal {
     z-index: 9999;
     display: none;

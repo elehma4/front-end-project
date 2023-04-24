@@ -1,6 +1,5 @@
 let connectBtn = document.querySelector('.connectBtn');
-console.log('hello');
-
+let body = document.querySelector('body');
 // function to check is a user is logged in
 // makes name appear in text of connectBtn if they are logged in
 
@@ -11,12 +10,8 @@ let checkForLoggedIn = () => {
         if(i === storage.length){
             break;
         }
-        console.log('hello');
-        console.log(key);
-        console.log();
+
         let parsed = JSON.parse(window.localStorage[key]);
-        console.log(parsed);
-        console.log(parsed.loggedIn);
 
         if(parsed.loggedIn === true){
             connectBtn.innerText = parsed.name;
@@ -62,18 +57,16 @@ class User {
 //create user function
 
 let createUser = ()=>{
+
     let userName = document.querySelector('.userName').value;
     let password = document.querySelector('.password').value;
-    let newUser = new User(userName, password);
-    console.log(newUser);
-    newUser.storeUserData(newUser.name);
-    console.log(window.localStorage);
-    let results = JSON.parse(window.localStorage[userName]);
-    console.log(results);
+
+    if(userName !== ""){
+        let newUser = new User(userName, password);
+        newUser.storeUserData(newUser.name);
+    }
     
     
-    
-    console.log(results);
 }
 
 let loginUser = (name) =>{
@@ -161,11 +154,9 @@ let addButtons = () => {
 // EL for connectBtn that calls addButtons function and creates createAccount DOM elements
 // 
 connectBtn.addEventListener('click', (e) => {
-    connectPopUp.removeAttribute('display');
-
+    connectPopUp.style.visibility = 'visible'
     if(connectBtn.innerText === "Connect"){
         addButtons();
-    
         let createAccountText = document.createElement('div');
         createAccountText.innerText = `Don't have an account? `;
         createAccountText.setAttribute('class', 'createAccountText');
@@ -177,9 +168,8 @@ connectBtn.addEventListener('click', (e) => {
         logOutButton.setAttribute('class', "logOutButton");
         logOutButton.innerText = "Log Out";
         connectPopUp.append(logOutButton);
+        connectPopUp.style.visibility = 'visible';
     }
-
-   
 })
 
 // create account EL with submit EL within it
@@ -190,7 +180,7 @@ createAccountButton.addEventListener('click', (e) => {
     submit.addEventListener('click', (e) => {
 
         createUser();
-        connectPopUp.style.display = "none";
+        connectPopUp.style.visibility = 'hidden';
     })
 })
 
@@ -198,12 +188,12 @@ createAccountButton.addEventListener('click', (e) => {
 
 submit.addEventListener('click', (e) => {
 
-    connectPopUp.removeAttribute('display');
+    connectPopUp.style.visibility = 'visible';
 
     let name = userName.value;
 
     loginUser(name);
-    connectPopUp.style.display = "none";
+    connectPopUp.style.visibility = 'hidden';
 })
 
 // logout button EL
@@ -212,8 +202,8 @@ logOutButton.addEventListener('click', (e) => {
 
     let name = connectBtn.innerText;
     logoutUser(name);
-    connectPopUp.style.display = "none";
+    connectPopUp.style.visibility = 'hidden';
 })
+
+
 checkForLoggedIn();
-console.log(window.localStorage.Ethan);
-console.log(window.localStorage);
