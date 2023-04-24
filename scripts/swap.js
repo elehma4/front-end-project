@@ -295,3 +295,19 @@ window.addEventListener("click", (e)=>{
     swapModal.style.display = 'none';
 });
 
+let confirmButton = document.querySelector('.confirm-button')
+
+confirmButton.addEventListener('click', ()=>{
+    for(let [key, value] of Object.entries(coins)){
+        if(assetButton.textContent == value.ticker){
+            let coin1name = value.name;
+            // find coin1name local storage balance
+            // subtract assetAmt value from balance 
+        }
+        if(assetButton2.textContent == value.ticker){
+            let coin2name = value.name;
+            // find coin2name local storage balance
+            // add assetAmt2 value to balance
+        }
+    }
+})
