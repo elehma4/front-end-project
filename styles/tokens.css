@@ -2,6 +2,8 @@
     padding: 0px;
     margin: 0px;
     width: 100%;
+    background-color: #333333;
+    align-items: center;
 }
 .navCon{
     padding-left: 20px;
@@ -11,31 +13,47 @@
     display: flex;
     flex-direction: column;
     border: solid black 2px;
-    border-radius: 25px;
-    margin-top: 20px;
-    margin-left: 10px;
-    margin-right: 10px;
+    border-radius: 15px;
+    position: relative;
+    top: 167px;
+    margin-left: 37px;
+    margin-right: 37px;
+    background-color: #FEFEE2;
+    color: #333333;
+}
+.tokensTitle{
+    display: flex;
+    justify-content: center;
+    padding-left: 33%;
+    padding-right: 33%;
 }
 .topRow{
     display: flex;
     justify-content: space-between;
     width: 100%;
     border-bottom: solid black 2px;
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 37px;
+    padding-right: 37px;
     padding-top: 3px;
     padding-bottom: 3px;
+    color: #333333;
+    font-weight: bold;
 }
 .gridContent{
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 37px;
+    padding-right: 37px;
+    padding-top: 13px;
+    padding-bottom: 17px;
     display: flex;
     justify-content: space-between;
+    background-color: #FEFEE2;
+    color: #333333;
+    border-radius: 15px;
 }
 
 .dataValue{
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 13px;
+    padding-bottom: 13px;
 }
 .coinNames{
     /* position: relative;
@@ -65,7 +83,6 @@
     .content{
         width: 350px;
         height: 200px;
-       
     }
     .contentContainer{
         position: relative;
@@ -75,3 +92,14 @@
 
     }
   }
+
+@media only screen and (min-width: 820px){
+    .content{
+        width: 857px;
+    }
+    .contentContainer{
+        position: relative;
+        display: flex;
+        justify-content: center;
+    }
+}
