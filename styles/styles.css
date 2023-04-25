@@ -15,13 +15,30 @@
     height: 100vh;
     width: 100vw;
 }
+.nav{
+    position: fixed;
+    z-index: 9999;
+    background-color: #333333;
+    width: 100%;
+}
+.wholeNav{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    width: 100%;
+    padding: 0px;
+}
 .left-nav{
     display: flex; 
+    width: 50%;
+    justify-content: space-around
 }
 .navbar-nav{
-    width: 100%;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
 .btn{
     background-color: white;
@@ -41,6 +58,7 @@
 
 .nav-logo{
     height: 100px;
+    margin-right: 10px;
 }
 .dropdown-item:hover{
     background-color: #7FC37E;
@@ -64,6 +82,8 @@
     border-radius: 25px;
     background-color: white;
     width: 77px;
+    height: 41px;
+    margin-right: 20px;
 }
 .connectBtn:hover{
     background-color: #7FC37E;
@@ -139,4 +159,56 @@
 }
 .logOutButton{
     margin-top: 30px;
+}
+.nav-link{
+    color: white;
+    margin-right: 10px;
+}
+.nav-link:hover{
+    color: #7FC37E;
+}
+@media only screen and (max-width: 473px){
+    .navbar-nav{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .left-nav{
+        width: 100%;
+    }
+    .oneArticle img{
+        width: 200px;
+    }
+}
+@media only screen and (max-width: 350px){
+    .navbar-nav{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .left-nav{
+        width: 200px;
+    }
+    .oneArticle img{
+        width: 200px;
+    }
+    .nav-logo{
+        height: 50px;
+    }
+    button{
+        height: 25px;
+        width: 20px;
+    }
+    .connectBtn{
+        height: 30px;
+        width: 60px;
+    }
+    .navbar-brand{
+        margin: 0px;
+    }
+    .nav-link{
+        margin-right: 5px;
+    }
 }
