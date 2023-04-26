@@ -237,7 +237,7 @@ const inputPriceFunction = async () => {
                     let coin1UsdValue = Number(inputPrice.innerHTML.slice(1))
                     let evaluateOther = coin1UsdValue / otherUsdValue
                     console.log(evaluateOther);
-                    await delay(777)
+                    await delay(888)
                     assetAmt2.value = Number(evaluateOther).toFixed(4)
                     let coin2usdValue = Number(assetAmt2.value) * Number(otherUsdValue)
                     await delay(111)
