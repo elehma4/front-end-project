@@ -1,0 +1,39 @@
+.whole-page{
+    background-color: #333333;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+.logo{
+    height: 500px;
+    width: 430px;
+}
+.description{
+    color: #FEFEE2;
+    margin-bottom: 20px;
+    width: 85%;
+}
+.link{
+    width: 120px;
+    background-color: #FEFEE2;
+    text-align: center;
+    color:#333333;
+    text-decoration: none;
+    margin-bottom: 20px;
+}
+.link:hover{
+    color: #FEFEE2;
+    background-color: rgb(127, 195, 126);
+}
+.apiRefs{
+    color: #FEFEE2;
+}
+.apiLink{
+    text-decoration: none;
+    color:#FEFEE2;
+}
+.apiLink:hover{
+    color: rgb(127, 195, 126);
+}
