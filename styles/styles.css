@@ -11,6 +11,9 @@
 .bg-brown{
     background-color: #333333;
 }
+.body{
+    height: 100vh;
+}
 .whole-page{
     height: 100vh;
     width: 100vw;
@@ -172,13 +175,27 @@
 @media only screen and (max-width: 970px){
     .whole-page{
         display: flex;
+        height: 100vh;
         /* flex-direction: column; */
     }
     .connectPopUp{
         position: fixed;
+        z-index: 9999;
         order: -1;
         top: 110px;
         left: calc(50% - 150px);
+    }
+    .content{
+        width: 90%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 126px;
+        
+    }
+    .contentContainer{
+        width: 100%;
     }
 }
 @media only screen and (max-width: 473px){
