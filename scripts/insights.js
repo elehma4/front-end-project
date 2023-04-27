@@ -21,14 +21,14 @@ let shortenDate = (string) => {
 
 
 
-coins.forEach((coin)=>{
-    let url = `https://newsapi.org/v2/everything?q=${coin}&apiKey=${apiKey}`;
+// coins.forEach((coin)=>{
+    // let url = `https://newsapi.org/v2/everything?q=${coin}&apiKey=${apiKey}`;
 
     // use this if API is out of fetch calls
-    // let url = '../scripts/testNews.js';
+    let url = '../scripts/testNews.js';
 
     // test coin variable, use if API is out
-    // let coin = 'bitcoin';
+    let coin = 'bitcoin';
 
     let coinDiv = document.createElement('div');
     coinDiv.setAttribute('class', `${coin}Div`)
@@ -105,7 +105,7 @@ coins.forEach((coin)=>{
         
     })
     content.append(coinDiv);
-})
+// })
 
 
 

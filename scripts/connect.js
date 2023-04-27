@@ -207,3 +207,11 @@ logOutButton.addEventListener('click', (e) => {
 
 
 checkForLoggedIn();
+
+// hide modal when clicking outside of it
+window.addEventListener("click", (e)=>{
+    if(e.target === connectBtn || createAccountButton || submit || logOutButton || connectPopUp) {
+        return;
+    }
+    connectPopUp.style.visibility = 'hidden';
+});
