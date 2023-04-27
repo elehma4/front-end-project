@@ -155,10 +155,10 @@
 
 @media only screen and (max-width: 473px){
     .assetAmt{
-        width: 222px;
+        width: 247px;
     }
     .assetAmt2{
-        width: 222px;
+        width: 247px;
     }
     .nav-logo{
         padding-left: 0px;
@@ -180,13 +180,75 @@
 }
 @media only screen and (max-width: 400px){
     .assetAmt{
+        width: 217px;
+    }
+    .assetAmt2{
+        width: 217px;
+    }
+    .swapBtn {
+        padding: 15px 133px;
+    }
+    .nav-logo{
+        padding-left: 0px;
+        margin-right: 0px;
+    }
+    .left-nav{
+        width: 250px;
+    }
+    .navbar-brand{
+        margin-right: 0px;
+    }
+    .whole-page{
+        padding-top: 0px;
+    }
+}
+@media only screen and (max-width: 381px){
+    .assetAmt{
+        width: 199px;
+    }
+    .assetAmt2{
+        width: 199px;
+    }
+    .swapBtn {
+        padding: 15px 133px;
+    }
+    .nav-logo{
+        padding-left: 0px;
+        margin-right: 0px;
+    }
+    .left-nav{
+        width: 250px;
+    }
+    .navbar-brand{
+        margin-right: 0px;
+    }
+    .whole-page{
+        padding-top: 0px;
+    }
+}
+@media only screen and (max-width: 357px){
+    .assetAmt{
         width: 177px;
     }
     .assetAmt2{
         width: 177px;
     }
-    .swapBtn {
-        padding: 15px 133px;
+    .assetButton{
+        width: 37px;
+        font-size: 13px;
+    }
+    .assetButton2{
+        width: 37px;
+        font-size: 13px;
+    }
+    .balance1{
+        font-size: 13px;
+    }
+    .balance2{
+        font-size: 13px;
+    }
+    .maxBtn{
+        font-size: 13px;
     }
     .nav-logo{
         padding-left: 0px;

@@ -5,23 +5,33 @@
     flex-direction: column;
     /* justify-content: center; */
     align-items: center;
+    font-family: Alegreya SC Regular;
 }
 .logo{
     height: 500px;
     width: 430px;
+    margin-top: 29px;
+    margin-bottom: 17px;
 }
 .description{
     color: #FEFEE2;
     margin-bottom: 20px;
-    width: 85%;
+    width: 57%;
+    text-align: center;
 }
 .link{
     width: 120px;
+    height: 37px;
     background-color: #FEFEE2;
     text-align: center;
     color:#333333;
     text-decoration: none;
-    margin-bottom: 20px;
+    margin-bottom: 29px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: large;
+    border-radius: 7px;
 }
 .link:hover{
     color: #FEFEE2;
@@ -36,4 +46,61 @@
 }
 .apiLink:hover{
     color: rgb(127, 195, 126);
+}
+
+@media only screen and (max-width: 1074px){
+    .logo{
+        width: 344px;
+        height: 400px;
+        margin-bottom: 11px;
+    }
+    .link{
+        height: 35px;
+        width: 107px;
+        font-size: 17px;
+        margin-bottom: 17px;
+    }
+    .description{
+        font-size: 15px;
+        width: 67%;
+    }
+    .apiRefs{
+        font-size: 13px;
+    }
+
+}
+
+@media only screen and (max-width: 1074px){
+    .description{
+        width: 94%;
+    }
+}
+
+
+@media only screen and (min-height: 700px){
+    .logo{
+        margin-bottom: 23px;
+    }
+    .link{
+        height: 37px;
+        width: 107px;
+        font-size: 17px;
+        margin-bottom: 37px;
+    }
+    .description{
+        font-size: 17px;
+        width: 71%;
+    }
+    .apiRefs{
+        position: relative;
+        top: 77px;
+        font-size: 15px;
+    }
+
+}
+
+@media only screen and (min-height: 1100px){
+    .logo{
+        margin-bottom: 77px;
+    }
 }
