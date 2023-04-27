@@ -173,11 +173,10 @@
     color: #7FC37E;
 }
 @media only screen and (max-width: 970px){
-    .whole-page{
+    /* .whole-page{
         display: flex;
         height: 100vh;
-        /* flex-direction: column; */
-    }
+    } */
     .connectPopUp{
         position: fixed;
         z-index: 9999;
@@ -185,7 +184,7 @@
         top: 110px;
         left: calc(50% - 150px);
     }
-    .content{
+    /* .content{
         width: 90%;
         display: flex;
         justify-content: center;
@@ -193,15 +192,15 @@
         position: absolute;
         top: 126px;
         
-    }
-    .contentContainer{
+    } */
+    /* .contentContainer{
         width: 100%;
-    }
+    } */
 }
 @media only screen and (max-width: 473px){
     .navbar-nav{
         display: flex;
-        flex-direction: column;
+        /* flex-direction: column; */
         align-items: center;
         justify-content: center;
     }
@@ -210,6 +209,21 @@
     }
     .oneArticle img{
         width: 200px;
+    }
+    .navbar-brand{
+        width: 50px;
+        height: 50px;
+    }
+    .nav-logo{
+        width: 50px;
+        height: 50px;
+    }
+    .connectBtn{
+        margin-left: 0px;
+        margin-right: 10px;
+        height: 30px;
+        width: 60px;
+        font-size: 14px;
     }
 }
 @media only screen and (max-width: 350px){
@@ -241,5 +255,10 @@
     }
     .nav-link{
         margin-right: 5px;
+    }
+}
+@media only screen and (min-width: 800px){
+    .left-nav{
+        width: 340px;
     }
 }
