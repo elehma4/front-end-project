@@ -42,7 +42,7 @@ class User {
             assets: {
                 bitcoin: 1,
                 ethereum: 10,
-                usdc: 100000,
+                usdc: 10000,
                 dogecoin: 10000,
                 arbitrum: 10000,
                 gmx: 100,
