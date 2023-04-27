@@ -198,8 +198,17 @@ allCoinNames.addEventListener('click', (e)=>{
                     // console.log(oneYear.prices[i][1]);
                     yAxis.push(oneYear.prices[i][1].toFixed(6))
                 }
-                console.log(xAxis);
+                // console.log(xAxis);
                 console.log(yAxis);
+
+                const formattedDates = xAxis.map((timestamp) => {
+                    const date = new Date(timestamp);
+                    const month = date.toLocaleString('default', { month: 'short' }); // month in abbreviated format
+                    const day = date.getDate(); // day of month
+                    return `${month} ${day}`; // month & day in string
+                })
+
+                console.log(formattedDates);
 
                 const ctx = document.getElementById('tokenChart').getContext('2d');
 
@@ -212,7 +221,7 @@ allCoinNames.addEventListener('click', (e)=>{
                 const myChart = new Chart(ctx, {
                     type: 'line',
                     data: {
-                        labels: xAxis,
+                        labels: formattedDates,
                         datasets: [{
                             label: `${e.target.innerHTML} Price`,
                             data: yAxis,

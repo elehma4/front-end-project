@@ -164,3 +164,48 @@
     border-radius: 15px;
     border: solid black 2px;
 }
+
+@media only screen and (max-width: 933px){
+    .graphModalContent{
+        height: 53%;
+        width: 93%;
+    }
+}
+
+@media only screen and (min-height: 936px){
+    .graphModalContent{
+        height: 61%;
+    }
+}
+@media only screen and (min-height: 1110px){
+    .graphModalContent{
+        height: 63%;
+    }
+}
+@media only screen and (min-height: 1200px){
+    .graphModalContent{
+        height: 65%;
+    }
+}
+@media only screen and (max-height: 743px){
+    .graphModalContent{
+        height: 51%;
+    }
+}
+@media only screen and (max-height: 700px){
+    .graphModalContent{
+        margin-top: 37px;
+    }
+}
+@media only screen and (max-height: 678px){
+    .graphModalContent{
+        margin-top: 57px;
+        height: 55%
+    }
+}
+@media only screen and (max-height: 636px){
+    .graphModalContent{
+        margin-top: 67px;
+        height: 57%
+    }
+}
