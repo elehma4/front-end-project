@@ -18,7 +18,7 @@
     top: 167px;
     margin-left: 37px;
     margin-right: 37px;
-    background-color: #FEFEE2;
+    background-color: rgb(127, 195, 126, 0.8);
     color: #333333;
 }
 .tokensTitle{
@@ -28,6 +28,7 @@
     padding-right: 33%;
     font-weight: bold;
     padding-top: 7px;
+    color: #FEFEE2;
 }
 .topRow{
     display: flex;
@@ -37,8 +38,8 @@
     padding-left: 37px;
     padding-right: 37px;
     padding-top: 3px;
-    padding-bottom: 3px;
-    color: #333333;
+    padding-bottom: 9px;
+    color: #FEFEE2;
     font-weight: bold;
 }
 .gridContent{
@@ -50,7 +51,7 @@
     justify-content: space-between;
     background-color: #FEFEE2;
     color: #333333;
-    border-radius: 15px;
+    border-radius: 0px 0px 15px 15px;
 }
 
 .dataValue{
@@ -119,5 +120,92 @@
         position: relative;
         display: flex;
         justify-content: center;
+    }
+}
+
+.coinName{
+    border-radius: 5px;
+}
+.coinName:hover{
+    cursor: pointer;
+    background-color: rgb(127, 195, 126);
+    padding-left: 3px;
+    font-weight: bold;
+}
+
+.graphModal{
+    position: fixed;
+    z-index: 10000;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    /* background-color: rgba(0, 0, 0, 0.4); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px;
+}
+
+.graphModalContent{
+    margin-top: 23px;
+    z-index: 100;
+    height: 471px;
+    width: 857px;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translate(-50%, -50%);
+    background-color: rgb(127, 195, 126);
+    color: #333333;
+    padding: 10px;
+    border-radius: 15px;
+    border: solid black 2px;
+}
+
+@media only screen and (max-width: 933px){
+    .graphModalContent{
+        height: 53%;
+        width: 93%;
+    }
+}
+
+@media only screen and (min-height: 936px){
+    .graphModalContent{
+        height: 61%;
+    }
+}
+@media only screen and (min-height: 1110px){
+    .graphModalContent{
+        height: 63%;
+    }
+}
+@media only screen and (min-height: 1200px){
+    .graphModalContent{
+        height: 65%;
+    }
+}
+@media only screen and (max-height: 743px){
+    .graphModalContent{
+        height: 51%;
+    }
+}
+@media only screen and (max-height: 700px){
+    .graphModalContent{
+        margin-top: 37px;
+    }
+}
+@media only screen and (max-height: 678px){
+    .graphModalContent{
+        margin-top: 57px;
+        height: 55%
+    }
+}
+@media only screen and (max-height: 636px){
+    .graphModalContent{
+        margin-top: 67px;
+        height: 57%
     }
 }

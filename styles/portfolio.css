@@ -19,7 +19,7 @@
     margin-top: 20px;
     margin-left: 37px;
     margin-right: 37px;
-    background-color: #FEFEE2;
+    background-color: rgb(127, 195, 126, 0.8);
     color: #333333;
 }
 .topRow{
@@ -30,8 +30,9 @@
     padding-left: 37px;
     padding-right: 37px;
     padding-top: 5px;
-    padding-bottom: 5px;
+    padding-bottom: 9px;
     font-weight: bold;
+    color: #FEFEE2;
 }
 .gridContent{
     padding-left: 37px;
@@ -40,6 +41,8 @@
     padding-bottom: 17px;
     display: flex;
     justify-content: space-between;
+    background-color: #FEFEE2;
+    border-radius: 0px 0px 15px 15px;
 }
 
 .dataValue{
@@ -57,6 +60,7 @@
     text-align: center;
     color: #333333;
     padding-top: 7px;
+    color: #FEFEE2;
 }
 @media only screen and (max-width: 500px) {
     .volumes{

@@ -222,6 +222,8 @@ const inputPriceFunction = async () => {
                     inputPrice.innerHTML = `$${Number(coin1usdValue).toFixed(2)}`
             })
         }
+    }
+    for (const [key, value] of Object.entries(coins)){
         // Get price in USD of asset 2:
         if(assetButton2.textContent == value.ticker){
             let coin2name = value.name;
@@ -234,8 +236,11 @@ const inputPriceFunction = async () => {
                     console.log(otherUsdValue);
                     let coin1UsdValue = Number(inputPrice.innerHTML.slice(1))
                     let evaluateOther = coin1UsdValue / otherUsdValue
+                    console.log(evaluateOther);
+                    await delay(888)
                     assetAmt2.value = Number(evaluateOther).toFixed(4)
                     let coin2usdValue = Number(assetAmt2.value) * Number(otherUsdValue)
+                    await delay(111)
                     inputPrice2.innerHTML = `$${Number(coin2usdValue).toFixed(2)}`
 
                     async function comparePriceOf1Asset() {
@@ -245,6 +250,7 @@ const inputPriceFunction = async () => {
                             console.log(coin1val);
                             const rate = otherUsdValue / coin1val
                             console.log(rate);
+                            await delay(111)
                             comparePrice.innerHTML = `1 ${assetButton2.textContent} = ${Number(rate).toFixed(4)} ${assetButton.textContent} ($${otherUsdValue.toFixed(2)})`
                         }
                     }
@@ -253,8 +259,6 @@ const inputPriceFunction = async () => {
         }            
     }
 }
-
-
 
 let swapButton = document.querySelector('.swapBtn')
 
@@ -305,7 +309,6 @@ swapButton.addEventListener("click", ()=>{
                 console.log(collection[coin1name]);
                 console.log(assetAmt.value);
                 
-    
                 // find coin1name local storage balance
                 // subtract assetAmt value from balance 
             }
@@ -370,15 +373,16 @@ const calcMax = async () => {
                 coin1name = 'usdc';
             }
             assetAmt.value = shortenDecimals(collection[coin1name]);
-            
         } 
     }
 }
 
-const callCalcMax = async () => {
+const delay = ms => new Promise(res => setTimeout(res, ms));
 
+const callCalcMax = async () => {
     calcMax();
-    await inputPriceFunction(); 
+    await delay(500)
+    inputPriceFunction(); 
 }
 
 let maxButton = document.querySelector('.maxBtn')
@@ -389,40 +393,33 @@ let mainSwap = document.querySelector('.mainSwap');
 mainSwap.addEventListener('mousemove', (e) => {
 
     let storage = window.localStorage;
-let user = connectBtn.innerText;
-// console.log(user);
-// console.log(storage);
-let parsed = JSON.parse(storage[user]);
-// console.log(parsed);
-let collection = parsed.assets;
-// console.log(collection);
+    let user = connectBtn.innerText;
+    // console.log(user);
+    // console.log(storage);
+    let parsed = JSON.parse(storage[user]);
+    // console.log(parsed);
+    let collection = parsed.assets;
+    // console.log(collection);
 
-for(let [key, value] of Object.entries(coins)){
-    if(assetButton.textContent == value.ticker){
-        let coin1name = value.name;
-        if(coin1name === "usd-coin"){
-            coin1name = 'usdc';
+    for(let [key, value] of Object.entries(coins)){
+        if(assetButton.textContent == value.ticker){
+            let coin1name = value.name;
+            if(coin1name === "usd-coin"){
+                coin1name = 'usdc';
+            }
+            let balance1 = document.querySelector('.balance1')
+            balance1.textContent = "Balance: " + shortenDecimals(collection[coin1name])// "Balance: ${localstorage balance}"
+            // console.log(collection[coin1name]);
         }
-        
-        let balance1 = document.querySelector('.balance1')
-        balance1.textContent = "Balance: " + shortenDecimals(collection[coin1name])// "Balance: ${localstorage balance}"
-        // console.log(collection[coin1name]);
-
-        
-        
-    }
-    if(assetButton2.textContent == value.ticker){
-        let coin2name = value.name;
-        if(coin2name === "usd-coin"){
-            coin2name = 'usdc';
+        if(assetButton2.textContent == value.ticker){
+            let coin2name = value.name;
+            if(coin2name === "usd-coin"){
+                coin2name = 'usdc';
+            }
+            let balance2 = document.querySelector('.balance2')
+            balance2.textContent = "Balance: " + shortenDecimals(collection[coin2name]) // "Balance: ${localstorage balance}"
         }
-        
-        let balance2 = document.querySelector('.balance2')
-        balance2.textContent = "Balance: " + shortenDecimals(collection[coin2name]) // "Balance: ${localstorage balance}"
-        
     }
-}
-
 
 })
 // assetModalContent.addEventListener('click', (e) => {
