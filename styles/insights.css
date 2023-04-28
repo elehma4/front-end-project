@@ -54,6 +54,28 @@ img{
 .articleSection{
     background-color: #333333;
 }
+.linkHolder{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 20px;
+    color:#FEFEE2;
+}
+.link{
+    background-color: #FEFEE2;
+    text-decoration: none;
+    color: #333333;
+    width: 90px;
+    padding-left: 5px;
+    padding-right: 5px;
+    text-align: center;
+    border-radius: 7px;
+}
+.link:hover{
+    color:#FEFEE2;
+    background-color:#7FC37E;
+}
 
 @media only screen and (max-width: 900px){
     .navbar{

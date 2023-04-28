@@ -1,6 +1,6 @@
 //example API URL : "https://newsapi.org/v2/everything?q=bitcoin&apiKey=${Your-API-Key-Here}"
 
-const apiKey = ''; // Replace with your API key
+const apiKey = '063f1bbb42f641feb960afc9ad1700ab'; // Replace with your API key
 
 let coins = ['bitcoin', 'ethereum', 'usdc', 'dogecoin', 'arbitrum', 'gmx', 'magic'];
 
@@ -21,14 +21,14 @@ let shortenDate = (string) => {
 
 
 
-// coins.forEach((coin)=>{
-    // let url = `https://newsapi.org/v2/everything?q=${coin}&apiKey=${apiKey}`;
+coins.forEach((coin)=>{
+    let url = `https://newsapi.org/v2/everything?q=${coin}&apiKey=${apiKey}`;
 
     // use this if API is out of fetch calls
-    let url = '../scripts/testNews.js';
+    // let url = '../scripts/testNews.js';
 
     // test coin variable, use if API is out
-    let coin = 'bitcoin';
+    // let coin = 'bitcoin';
 
     let coinDiv = document.createElement('div');
     coinDiv.setAttribute('class', `${coin}Div`)
@@ -105,16 +105,7 @@ let shortenDate = (string) => {
         
     })
     content.append(coinDiv);
-    let link = document.createElement('a');
-    link.setAttribute('class', 'link');
-    link.setAttribute('href', 'insightsAPI.html');
-    link.innerText = 'Click Here';
-    let linkHolder = document.createElement('div');
-    linkHolder.setAttribute('class', 'linkHolder');
-    linkHolder.innerText = `To see up-to-date information on all Hermes App assets:`
-    linkHolder.append(link);
-    content.append(linkHolder);
-// })
+})
 
 
 
