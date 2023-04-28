@@ -422,15 +422,3 @@ mainSwap.addEventListener('mousemove', (e) => {
     }
 
 })
-// assetModalContent.addEventListener('click', (e) => {
-//     inputPrice.innerText = "$0.00";
-//     inputPrice2.innerText = "$0.00"
-//     assetAmt.value = "";
-//     assetAmt2.value = "";
-// })
-// assetModalContent2.addEventListener('click', (e) => {
-//     inputPrice.innerText = "$0.00";
-//     inputPrice2.innerText = "$0.00"
-//     assetAmt.value = "";
-//     assetAmt2.value = "";
-// })
