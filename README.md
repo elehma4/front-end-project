@@ -4,7 +4,7 @@ Track, manage, and stay up to date with all Hermes' supported assets.
 <br/><br/>
 ## Live Link: 🔗
 
-Access our site at [App.Hermes.com](urlHere)
+Access our site at https://hermes-defi.netlify.app/index.html
 <br/><br/>
 ## Table of Contents: 📚
 
