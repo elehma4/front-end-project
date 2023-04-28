@@ -3,11 +3,11 @@ Hermes App provides a simplistic and user-friendly interface for swapping crypto
 Track, manage, and stay up to date with all Hermes' supported assets.
 <br/><br/>
 ## Live Link: 🔗
----
+
 Access our site at [App.Hermes.com](urlHere)
 <br/><br/>
 ## Table of Contents: 📚
----
+
 * [About Hermes App](#about)<br/>
 * [Screenshots](#screen)<br/>
 * [Technologies](#tech)<br/>
@@ -16,7 +16,7 @@ Access our site at [App.Hermes.com](urlHere)
 * [Credits](#credits)
 <br/><br/>
 ## <a id="about"></a>About Hermes App: 🔄📈
----
+
 ### <b>Swap Page:</b>
 Hermes' swap interface allows users to select a cryptocurrency, and provides real-time conversion of the selected cryptocurrency to another cryptocurrency based on current market prices. It's main function is a swap feature that allows users to swap one cryptocurrency for another. Additionally, it has a "max" button that allows users to input the maximum amount of cryptocurrency they have available for trading. The script fetches market prices of Hermes' supported cryptocurrencies from the CoinGecko public API.
 <br>
@@ -32,7 +32,7 @@ This page fetches data from the Coingecko API to display the prices, market caps
 The account button in the top right of each Hermes' page allows users to create an account, log in, and view a portfolio of various cryptocurrency assets. The account feature uses localStorage to store user data and tracks whether a user is logged in or not. Overall, the account feature provides a basic authentication and portfolio display functionality for the user-friendly cryptocurrency investment application.
 <br/><br/>
 ## <a id="screen"></a>Screenshots: 📷
----
+
 ### <b>Home:</b><br>
 <img src="images/homepage.PNG" alt="home" height="333px"></img>
 
@@ -47,7 +47,7 @@ The account button in the top right of each Hermes' page allows users to create 
 
 ### <b>Swap - Change Asset Button & Modal Pop-up:</b><br>
 <img src="images/swap-assetbutton.PNG" alt="assets" height="333px"></img>
----
+
 ### <b>Tokens:</b><br>
 <img src="images/tokens-page.PNG" alt="tokens" height="333px"></img>
 
@@ -63,7 +63,7 @@ The account button in the top right of each Hermes' page allows users to create 
 
 <br/><br/>
 ## <a id="tech"></a>Technologies: 💻
----
+
 - JavaScript
 - HTML 
 - CSS (FlexBox)
@@ -71,7 +71,7 @@ The account button in the top right of each Hermes' page allows users to create 
 - APIs: <a class="apiLink" href="https://www.coingecko.com/en/api/documentation">CoinGecko </a>(prices & price history) and <a class="apiLink" href="https://newsapi.org/docs">News API</a> (top news articles)
 <br/><br/>
 ## <a id="approach"></a>Approach: 💭
----
+
 <b>Hunter:</b><br>
 My approach for our front-end project was to create a website that would be useful to many people. I think that we accomplished this goal in the sense that, through the use of our app, anyone can get experience in trading crypto without the risk of losing their hard-earned assets. 
 <br>
@@ -84,11 +84,11 @@ Throughout this project, my main focus was to incorporate accurate trading conve
 
 <br/><br/>
 ## <a id="status"></a>Status: 📶
----
+
 Hermes App is in beta stage of development. The app uses "fake money", however the asset swapping, price data, charts, news, and portfolio tracker are all an accurate representation of trading, tracking, and managing cryptocurrency assets. <br>This was a 10-day front-end project built by Hunter and Ethan during week six and week seven of DigitalCrafts Bootcamp. We hope you enjoy, and good luck trading! 
 <br/><br/>
 ## <a id="credits"></a>Credits: 🙌
----
+
 ### Contributors: 
 <a href="">Hunter Atkins</a> & <a href="https://www.linkedin.com/in/ethan-lehman-444b68220/">Ethan Lehman</a><br>
 <img src="images/simba.JPG" alt="Simba" height="137px"></img>
