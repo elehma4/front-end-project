@@ -34,16 +34,25 @@ The account button in the top right of each Hermes' page allows users to create 
 ## <a id="screen"></a>Screenshots: 📷
 ---
 ### <b>Home:</b><br>
+<img src="images/homepage.PNG" alt="home" height="333px"></img>
 
 ### <b>Swap:</b><br>
+<img src="images/swap-main.PNG" alt="home" height="333px"></img>
 
-### <b>Swap - Change Asset Buttons:</b><br>
+### <b>Swap - Trading:</b><br>
+<img src="images/swap-trade.PNG" alt="home" height="333px"></img>
 
 ### <b>Swap - Confirm Swap:</b><br>
+<img src="images/swap-confirm.PNG" alt="home" height="333px"></img>
 
+### <b>Swap - Change Asset Button & Modal Pop-up:</b><br>
+<img src="images/swap-assetbutton.PNG" alt="home" height="333px"></img>
+---
 ### <b>Tokens:</b><br>
+<img src="images/tokens-page.PNG" alt="home" height="333px"></img>
 
 ### <b>Tokens Charts:</b><br>
+<img src="images/tokens-charts.PNG" alt="home" height="333px"></img>
 
 ### <b>Insights:</b><br>
 
