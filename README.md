@@ -60,7 +60,7 @@ The account button in the top right of each Hermes' page allows users to create 
 ### <b>Porfolio:</b><br>
 <img src="images/portfolio.png" alt="portfolio" height="333px"></img>
 ### <b>Account:</b><br>
-<img src="images/connectBtn.png" alt="connect button" height="333px"></img>
+<img src="images/connectBtn.png" alt="connect button" height="222px"></img>
 <img src="images/connectPopUp.png" alt="connect pop up" height="333px"></img>
 
 <br/><br/>
