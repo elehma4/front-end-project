@@ -55,12 +55,12 @@ The account button in the top right of each Hermes' page allows users to create 
 <img src="images/tokens-charts.PNG" alt="charts" height="333px"></img>
 
 ### <b>Insights:</b><br>
-<img src="images/defNews.png" alt="default news" height="333px"></img>
+<img src="images/defNews.png" alt="default news" height="333px"></img><br>
 <img src="images/newsAPI.png" alt="news with API call" height="333px"></img>
 ### <b>Porfolio:</b><br>
 <img src="images/portfolio.png" alt="portfolio" height="333px"></img>
 ### <b>Account:</b><br>
-<img src="images/connectBtn.png" alt="connect button" height="222px"></img>
+<img src="images/connectBtn.png" alt="connect button" height="222px"></img><br>
 <img src="images/connectPopUp.png" alt="connect pop up" height="333px"></img>
 
 <br/><br/>
